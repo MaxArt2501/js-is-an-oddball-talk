@@ -1,0 +1,127 @@
+@font-face {
+  font-family: 'Consolas';
+  font-display: swap;
+  src: local('Consolas'), url(../fonts/consolas.ttf) format('truetype');
+}
+
+h1,
+h2 {
+  color: var(--brand-color);
+}
+
+pre:has(> code) {
+  position: relative;
+}
+
+code.language-jsdoc {
+  color: rgb(114, 255, 114);
+
+  .token.parameter {
+    color: rgb(151, 255, 255);
+  }
+}
+
+.token {
+  &.operator {
+    background: none;
+  }
+  &.class-name {
+    > .punctuation + .operator {
+      color: rgb(114, 255, 114);
+    }
+  }
+  &.constant {
+    color: #ff71a4
+  }
+}
+
+.outline {
+  -webkit-text-fill-color: #000;
+  -webkit-text-stroke-color: currentColor;
+  -webkit-text-stroke-width: 0.02em;
+  text-shadow: 0 0 0.2em;
+}
+
+@keyframes clip-left {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes clip-right {
+  0% {
+    clip-path: inset(0 0 0 100%);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+p-deck:not([mode='speaker']) {
+  @each $dir in left right {
+    p-fragment[aria-hidden='false'] .clip-#{$dir},
+    p-slide[aria-hidden='false'] .clip-#{$dir}:not(p-fragment > .clip-#{$dir}) {
+      animation: clip-#{$dir} var(--fragment-duration, 300ms) $motion-entrance-timing-fn 1 forwards;
+    }
+  }
+}
+
+.code-popover {
+  position: absolute;
+  border: 0.1em solid gray;
+  border-radius: 0.2em;
+  background: inherit;
+  transform: translateY(-100%);
+  margin-top: 1em;
+  margin-left: 1em;
+  white-space-collapse: collapse;
+  z-index: 1;
+
+  &#{&} > * {
+    padding: 0.25em 0.5em;
+  }
+
+  > div {
+    font-family: var(--base-font-family);
+  }
+  em {
+    color: inherit;
+  }
+
+  > code[class*='language-'] {
+    display: block;
+    border-radius: 0;
+    line-height: normal;
+  }
+
+  > code:not(:last-child) {
+    border-bottom: 0.1em solid #606060;
+  }
+
+  pre > p-fragment[aria-hidden='true']:is(&) {
+    opacity: 0;
+  }
+  pre[class*='language-']:has(&) {
+    overflow: visible;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: calc(100% + 0.5lh);
+    left: 0;
+    width: 2ch;
+    height: 3.1ch;
+    background: url(../img/cursor.svg);
+  }
+}
+
+.the-arrow {
+  background: url(../img/arrow.svg);
+  aspect-ratio: 140/242;
+  position: absolute;
+  width: 2em;
+  z-index: 1;
+}
