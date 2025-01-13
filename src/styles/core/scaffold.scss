@@ -10,16 +10,27 @@ p-slide {
 }
 
 pre p-fragment {
-  opacity: 0.1;
-
   &[aria-hidden='true'] p-fragment,
   &[aria-hidden='false'] {
     opacity: 1;
+  }
+  &.collapsed {
+    interpolate-size: allow-keywords;
+    display: inline-block;
+    transition: opacity var(--fragment-duration, 300ms), width var(--fragment-duration, 300ms);
+    width: 0;
+    overflow: clip;
+
+    &[aria-hidden='false'] {
+      width: auto;
+    }
   }
 
   code[class*='language-'] {
     white-space: pre;
     background: none;
+    padding: 0;
+    border-radius: 0;
   }
 }
 

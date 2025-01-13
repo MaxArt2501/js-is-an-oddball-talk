@@ -206,8 +206,15 @@ gfy-blob {
   box-shadow: 0 0 0.5em rgba(black, 0.5);
 }
 
-.javascript {
+.JavaScript {
   background-color: #f7df1e;
+  color: #323330;
+  padding: 0 0.25em;
+}
+
+.TypeScript {
+  background-color: #3178c6;
+  color: white;
   padding: 0 0.25em;
 }
 
@@ -291,35 +298,18 @@ a {
   }
 }
 
-.support-table {
-  font-size: 150%;
-  width: 12em;
-  margin: auto;
-  border-collapse: collapse;
+.browser {
+  padding-inline-start: 1.25em;
+  margin-inline: 1em;
+  background: 0 50% / 1em no-repeat;
 
-  img {
-    height: 2em;
-    filter: saturate(0) drop-shadow(0.1em 0.1em 0.1em #0005);
+  &.chrome {
+    background-image: url(../img/chrome.svg);
   }
-  th {
-    border-bottom: 0.1em solid;
+  &.firefox {
+    background-image: url(../img/firefox.svg);
   }
-  td,
-  th {
-    text-align: center;
-    padding: 0.5em;
-
-    &:not(:first-child) {
-      border-inline-start: 0.1em solid;
-    }
-  }
-  span {
-    font-size: 150%;
-  }
-
-  caption {
-    font-family: 'Old Newspaper Types', serif;
-    font-size: 60%;
-    margin-bottom: 0.5em;
+  &.safari {
+    background-image: url(../img/safari.svg);
   }
 }
