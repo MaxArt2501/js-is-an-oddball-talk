@@ -1,0 +1,42 @@
+<p-slide>
+  <pre class="big self-center"><code class="language-js">    array.sort()  &#x27f6;  array.toSorted()
+
+ array.reverse()  &#x27f6;  array.toReversed()
+
+  array.splice()  &#x27f6;  array.toSpliced()
+
+array[index] = x  &#x27f6;  array.with(index, x)
+</code></pre>
+  <p-fragment class="self-center">
+    <span class="browser chrome">110</span>
+    <span class="browser firefox">115</span>
+    <span class="browser safari">16</span>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-js">   array.fill(0)  &#x27f6;  array.toFilled(0)</code><p-fragment class="big-x" style="width: 4em; left: 61%; top: -3%"></p-fragment>
+                      <p-fragment><code class="language-js">Array.from(array, () => 0)</code></p-fragment>
+
+<p-fragment><code class="language-js">array.length = n</code></p-fragment><p-fragment>  &#x27f6;  <code class="language-js">array.slice(0, n)</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">Array(3)</code>
+<p-fragment>> [<i>empty &times; 3</i>]</p-fragment>
+
+<p-fragment><code class="language-js">Array(3).with()</code></p-fragment>
+<p-fragment>> [<i>undefined, undefined, undefined</i>]</p-fragment></pre>
+</p-slide>
+<p-slide class="center">
+  <h3><code>null</code></h3>
+  <h3><code>undefined</code></h3>
+  <h3><code>empty</code> ⁉️</h3>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">Array(3).forEach(console.log)</code>
+<p-fragment><code class="language-js">// 🦗</code></p-fragment>
+
+<p-fragment><code class="language-js">Array(2 ** 32 - 1)
+// ⚡</code></p-fragment></pre>
+</p-slide>
