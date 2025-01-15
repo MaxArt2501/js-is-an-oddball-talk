@@ -13,11 +13,16 @@ pre:has(> code) {
   position: relative;
 }
 
-code.language-jsdoc {
-  color: rgb(114, 255, 114);
+code {
+  &.language-jsdoc {
+    color: rgb(114, 255, 114);
 
-  .token.parameter {
-    color: rgb(151, 255, 255);
+    .token.parameter {
+      color: rgb(151, 255, 255);
+    }
+  }
+  &.language-error {
+    color: salmon;
   }
 }
 
@@ -31,7 +36,7 @@ code.language-jsdoc {
     }
   }
   &.constant {
-    color: #ff71a4
+    color: #ff71a4;
   }
 }
 
@@ -73,14 +78,13 @@ p-deck:not([mode='speaker']) {
   border: 0.1em solid gray;
   border-radius: 0.2em;
   background: inherit;
-  transform: translateY(-100%);
-  margin-top: 1em;
-  margin-left: 1em;
+  transform: translate(calc(2em / 3), calc(0.5em - 100%));
   white-space-collapse: collapse;
   z-index: 1;
 
   &#{&} > * {
     padding: 0.25em 0.5em;
+    opacity: 1;
   }
 
   > div {
@@ -96,8 +100,14 @@ p-deck:not([mode='speaker']) {
     line-height: normal;
   }
 
-  > code:not(:last-child) {
+  > code:not(:last-child),
+  [data-ts-error] {
     border-bottom: 0.1em solid #606060;
+  }
+
+  [data-ts-error]::after {
+    content: '(' attr(data-ts-error) ')';
+    color: gray;
   }
 
   pre > p-fragment[aria-hidden='true']:is(&) {
@@ -111,11 +121,21 @@ p-deck:not([mode='speaker']) {
     content: '';
     position: absolute;
     top: calc(100% + 0.5lh);
-    left: 0;
+    left: var(--popover-cursor-shift, 0ch);
     width: 2ch;
     height: 3.1ch;
     background: url(../img/cursor.svg);
   }
+}
+
+.squiggle {
+  position: absolute;
+  color: transparent;
+  margin-top: 0.5em;
+  margin-left: calc(2em / 3);
+  text-decoration: underline wavy red;
+  text-underline-offset: 0.25em;
+  text-shadow: none;
 }
 
 .the-arrow {

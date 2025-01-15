@@ -194,3 +194,63 @@ array.splice(...)  &#x27f6;  array.toSpliced(...)
     <p>I also think it's nice how it communicates that you want to discard the return value of the function, although some might get confused by this strange keyword</p>
   </p-notes>
 </p-slide>
+<p-slide>
+  <h3 class="center">
+    <code
+      >@typescript-eslint/<br />
+      no-floating-promises</code
+    >
+  </h3>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">useEffect(() => {</code>
+  <p-fragment class="collapsed"><code class="language-js">void </code></p-fragment><code class="language-js">doSomethingAsync();
+});</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">Object.entries(null)</code>
+<p-fragment><code class="language-error">> Uncaught TypeError: Cannot convert
+  undefined or null to object</code></p-fragment>
+
+<p-fragment><code class="language-js">typeof null
+> 'object'</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">const obj = null;</code>
+<p-fragment><code class="language-js">const result = { foo: 42, ...obj };</code></p-fragment>
+<p-fragment><code class="language-js">> { foo: 42 }</code></p-fragment>
+</pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">result = { foo: 42, ...null };</code>
+
+<p-fragment><code class="language-js">result = { foo: 42, ...void 42 };</code></p-fragment>
+
+<p-fragment><code class="language-js">result = { foo: 42, ...false };</code></p-fragment>
+
+<p-fragment><code class="language-js">result = { foo: 42, ...42 };</code></p-fragment>
+
+<p-fragment><code class="language-js">result = { foo: 42, ...'' };</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-ts">let item: Item | null</code><p-fragment index="1" class="collapsed"><code class="language-js"> = null</code></p-fragment>;
+
+<p-fragment><code class="language-ts">const payload = { action: 'add', ...item };</code></p-fragment><p-fragment index="2" class="code-popover" style="top: 2lh;left: -4ch;--popover-cursor-shift: 40ch"><div data-ts-error="2698">Spread types may only be created from object types.</div>
+<code class="language-typescript">let item: null</code></p-fragment><p-fragment index="1" class="squiggle" style="top: 2lh;left: 33ch">...item</p-fragment></pre>
+  <p-fragment class="self-center" index="2">
+    <pre class="big"><code class="language-js">const payload = Object.assign({ action: 'add' }, item);</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-ts">const item: Item = getItem();
+const hasItem: boolean = shouldHaveItem(item);</code>
+
+<p-fragment><code class="language-ts">const payload = { action: 'add', ...hasItem && item };</code></p-fragment></pre>
+  <p-fragment
+    ><img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around '...hasItem && item' in the code"
+      class="from-above"
+      style="top: 55%; width: 10em; left: 55%; height: 2em"
+  /></p-fragment>
+</p-slide>
