@@ -7,6 +7,13 @@
 > 'object'</code></p-fragment></pre>
 </p-slide>
 <p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-js">if (typeof item === 'object'</code><p-fragment class="collapsed"><code class="language-js"> && item !== null</code></p-fragment><code class="language-js">) {</code>
+  <p-fragment>😫</p-fragment>
+<code class="language-js">}</code></pre>
+</p-slide>
+<p-slide>
   <pre class="big self-center"><code class="language-js">const obj = null;</code>
 <p-fragment><code class="language-js">const result = { foo: 42, ...obj };</code></p-fragment>
 <p-fragment><code class="language-js">> { foo: 42 }</code></p-fragment>
@@ -36,12 +43,21 @@
   <pre class="big self-center"><code class="language-ts">const item: Item = getItem();
 const hasItem: boolean = shouldHaveItem(item);</code>
 
-<p-fragment><code class="language-ts">const payload = { action: 'add', ...hasItem && item };</code></p-fragment></pre>
+<p-fragment><code class="language-ts">const payload = {
+  action: 'add',
+  ...(hasItem ? item : {})</code><p-fragment><img
+    src="img/strike.svg#svgView(preserveAspectRatio(none))"
+    alt="A strike through the text '...(hasItem ? item : {})' in the code"
+    class="strike"
+    style="top: 5lh; left: 2ch; width: 24ch"
+/></p-fragment>
+  <p-fragment><code class="language-js">...hasItem && item</code></p-fragment>
+};</p-fragment></pre>
   <p-fragment
     ><img
       src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
       alt="A marker circle around '...hasItem && item' in the code"
       class="from-above"
-      style="top: 55%; width: 10em; left: 55%; height: 2em"
+      style="top: 64%; width: 9.7em; left: 11%; height: 1.8em"
   /></p-fragment>
 </p-slide>

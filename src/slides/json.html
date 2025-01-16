@@ -1,0 +1,173 @@
+<p-slide class="center">
+  <h4>Did you know&hellip;</h4>
+  <p-fragment>
+    <p>JSON isn't compatible with <span class="JavaScript"></span></p>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">JSON.stringify({
+  void: undefined,
+  func() {},
+  fn: () => {},
+  symbol: Symbol(),
+  [Symbol('foo')]: 'symbol'
+})</code>
+<p-fragment><code class="language-js">> '{}' // 🙄</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-js">const copy = JSON.parse(JSON.stringify(item));</code><p-fragment><img src="img/strike.svg#svgView(preserveAspectRatio(none))" alt="A strike through the JSON.parse+stringify code" class="strike" style="inset: 0; width: 46ch" /></p-fragment></pre>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">const copy = structuredClone(item);</code></pre>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <span class="browser chrome">98</span>
+    <span class="browser firefox">94</span>
+    <span class="browser safari">15.4</span>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">{ "bigMcHuge": 12345678901234567890 }</code></pre>
+  <p-notes>
+    Point is, JSONs can have arbitrarily large numbers. It's an interchange format, so it doesn't care about language limitations, not even JavaScript's. But JavaScript has
+    arbitrarily large integers now, doesn't it? They're the BigInts.
+  </p-notes>
+  <pre class="big self-center language-js"><p-fragment><code class="language-js">const bigMcHuge = 12345678901234567890n;</code></p-fragment>
+
+<p-fragment><code class="language-js">JSON.stringify({ bigMcHuge })</code></p-fragment>
+<p-fragment><code class="language-error">> Uncaught TypeError: Do not know how to
+  serialize a BigInt</code></p-fragment></pre>
+  <p-notes>Haha, of course you know how to serialize a BigInt, you silly goose! Don't BigInts have the <code>toString</code> method?</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">BigInt.prototype.toJSON = function() {
+  return this.toString();
+};</code></pre>
+  <p-fragment>
+    <h1 class="center">😱</h1>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center">
+
+  <code class="language-js">array.contains(x)</code><p-fragment class="big-x" style="width: 4em; left: 19%; top: 16%"></p-fragment><p-fragment>  &#x27f6;  <code class="language-js">array.includes(x)</code></p-fragment>
+
+  <p-fragment><code class="language-js">array.groupBy(fn)</code></p-fragment><p-fragment class="big-x" style="width: 4em; left: 18%; top: 51%"></p-fragment><p-fragment>  &#x27f6;  <code class="language-js">Object.groupBy(array, fn)</code></p-fragment>
+
+</pre>
+</p-slide>
+<p-slide>
+  <h3 class="center">
+    &ldquo;&hellip; one of the few cases where patching built-in objects is not explicitly discouraged&rdquo;
+    <br />
+    &mdash; <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt#use_within_json">MDN</a>
+  </h3>
+</p-slide>
+<p-slide>
+  <p-fragment index="1" style="position: absolute; top: 10%; left: 40%">
+    <span class="browser chrome">85</span>
+    <span class="browser firefox">79</span>
+    <span class="browser safari">14</span>
+    <div class="the-arrow" style="top: 75%; left: 33%; width: 0.8em; rotate: 10deg"></div>
+  </p-fragment>
+  <pre
+    class="big self-center"
+  ><code class="language-js">BigInt.prototype.toJSON </code><p-fragment class="collapsed"><code class="language-js">??</code></p-fragment>= <code class="language-js">function() {
+  return this.toString();
+};</code>
+
+<p-fragment index="1"><code class="language-js">JSON.stringify({ bigMcHuge })</code></p-fragment>
+<p-fragment index="1"><code class="language-js">> '{"bigMcHuge":"12345678901234567890"}'</code></p-fragment><p-fragment index="1"><img
+  src="img/marker-circle.svg#svgView(preserveAspectRatio(none))" alt="A marker circle around the opening quotes of the number" class="from-above" style="top: 80%;width: 1em;left: 39.5%;height: 1em"><img
+  src="img/marker-circle.svg#svgView(preserveAspectRatio(none))" alt="A marker circle around the closing quotes of the number" class="from-above" style="top: 80%;width: 1em;left: 89%;height: 1em"></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">BigInt.prototype.toJSON ??= function() {</code>
+  <p-fragment><code class="language-js">return JSON.rawJSON(this.toString());</code></p-fragment><p-fragment><img
+    src="img/marker-circle.svg#svgView(preserveAspectRatio(none))" alt="A marker circle around the JSON.rawJSON function name" class="from-above" style="top: 17%;width: 9em;left: 19%;height: 2em;"></p-fragment>
+<code class="language-js">};</code>
+
+<p-fragment><code class="language-js">JSON.stringify({ bigMcHuge })</code></p-fragment>
+<p-fragment><code class="language-js">> '{"bigMcHuge":12345678901234567890}'</code></p-fragment></pre>
+  <p-fragment style="position: absolute; top: 50%; left: 80%; font-size: 200%">🎉</p-fragment>
+  <p-fragment class="self-center">
+    <span class="browser chrome">114</span>
+    <span class="browser firefox">135</span>
+    <span class="browser safari">-</span>
+  </p-fragment>
+  <p-notes>
+    What does <code>JSON.rawJSON</code> return? A frozen object with no prototype, and a single constant string property named <code>rawJSON</code>, whose value is the function
+    argument and must be a formally correct JSON <i>primitive</i> value. It cannot even be converted to a string, but has an internal flag that allows us to use it with
+    <code>JSON.stringify</code> alone.
+  </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">const raw = '{ "bigMcHuge": 12345678901234567890 }';</code>
+
+<p-fragment><code class="language-js">JSON.parse(raw)</code></p-fragment>
+<p-fragment><code class="language-js">> { bigMcHuge: 12345678901234567000 }</code></p-fragment></pre>
+  <p-fragment
+    ><img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the last digits of the source"
+      class="from-above"
+      style="top: 34.6%; width: 2em; left: 79.7%; height: 1em" /><img
+      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+      alt="A marker circle around the last digits of the output"
+      class="from-above"
+      style="top: 58.7%; width: 2em; left: 58.2%; height: 1em"
+  /></p-fragment>
+  <p-notes>Some may say: "I know! I'll use a reviver!" - Except, no you don't.</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">JSON.parse(raw, (key, value) => {</code>
+  <p-fragment><code class="language-js">// value already lost precision :(</code></p-fragment>
+<code class="language-js">});</code></pre>
+</p-slide>
+<p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-js">JSON.parse(raw, (key, value</code><p-fragment class="collapsed"><code class="language-js">, context</code></p-fragment><code class="language-js">) => {   </code>
+  <p-fragment index="1"><code class="language-js">return BigInt(context.source);</code></p-fragment>
+<code class="language-js">});</code></pre>
+  <p-fragment>
+    <pre class="big" style="position: absolute; top: 10%; left: 30%"><code class="language-js">{ source: '12345678901234567890' }</code></pre>
+    <div class="the-arrow" style="top: 24%; left: 63%; scale: -1 1; width: 1.2em"></div>
+  </p-fragment>
+  <p-fragment class="self-center" style="position: absolute; bottom: 25%" index="1">
+    <span class="browser chrome">114</span>
+    <span class="browser firefox">135</span>
+    <span class="browser safari">-</span>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">JSON.parse(raw, (key, value, context) => {</code>
+  <p-fragment><code class="language-js">if (!/\D/.test(context.source))</code></p-fragment>
+    <code class="language-js">return BigInt(context.source);</code>
+  <p-fragment><code class="language-js">return value;</code></p-fragment>
+});</pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">JSON.parse(raw, (key, value, { source }) => {
+  return isBigInt(source) ? BigInt(source) : value;
+});</code><p-fragment
+><img
+  src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
+  alt="A marker circle around 'isBigInt' function name"
+  class="from-above"
+  style="top: 14.7%;width: 6em;left: 15.6%;height: 1.9em;" /></p-fragment>
+
+<p-fragment><code class="language-js">const isBigInt = numstr => !/\D/.test(numstr) &&</code></p-fragment>
+  <p-fragment><code class="language-js">numstr.localeCompare(
+    '9007199254740991', undefined, { numeric: true }
+  ) > 0;</code></p-fragment></pre>
+  <p-notes> There must be something that tells us when a numeric string is greater than anothe&hellip; Golly, it's our good friend <code>localeCompare</code>! </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">const numCompare = new Intl.Collator(
+    undefined, { numeric: true }).compare;
+
+const isBigInt = numstr => !/\D/.test(numstr) &&
+  numCompare(numstr, '9007199254740991') > 0;</code></pre>
+</p-slide>

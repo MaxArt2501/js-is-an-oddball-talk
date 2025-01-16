@@ -27,6 +27,7 @@ array[index] = x  &#x27f6;  array.with(index, x)
 
 <p-fragment><code class="language-js">Array(3).with()</code></p-fragment>
 <p-fragment>> [<i>undefined, undefined, undefined</i>]</p-fragment></pre>
+  <p-notes>Careful that these new non-mutating methods makes <i>dense</i> a sparse array!</p-notes>
 </p-slide>
 <p-slide class="center">
   <h3><code>null</code></h3>
@@ -39,4 +40,8 @@ array[index] = x  &#x27f6;  array.with(index, x)
 
 <p-fragment><code class="language-js">Array(2 ** 32 - 1)
 // ⚡</code></p-fragment></pre>
+  <p-notes>
+    Browsers be like: "Ah! You thought I'd give you 32 GB of memory!? We don't <i>have</i> 32 GB of memory, and even if we had, no way I'm allocating them for <i>you</i>! If
+    anything, I'll get them for <i>myself!</i>"
+  </p-notes>
 </p-slide>

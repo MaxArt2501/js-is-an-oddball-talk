@@ -128,14 +128,26 @@ p-deck:not([mode='speaker']) {
   }
 }
 
-.squiggle {
+.squiggle,
+.strike {
   position: absolute;
   color: transparent;
   margin-top: 0.5em;
   margin-left: calc(2em / 3);
+  text-shadow: none;
+}
+
+.squiggle {
   text-decoration: underline wavy red;
   text-underline-offset: 0.25em;
-  text-shadow: none;
+}
+
+.strike {
+  height: 1lh;
+
+  p-fragment[aria-hidden='false'] > & {
+    animation: clip-left var(--fragment-duration) linear 1 forwards;
+  }
 }
 
 .the-arrow {
@@ -144,4 +156,11 @@ p-deck:not([mode='speaker']) {
   position: absolute;
   width: 2em;
   z-index: 1;
+}
+
+.the-stroke {
+  position: absolute;
+  height: 1lh;
+  width: 6em;
+  border-image: url(../img/strike.svg) 0 fill;
 }

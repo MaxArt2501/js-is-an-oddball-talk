@@ -211,12 +211,18 @@ gfy-blob {
   background-color: #f7df1e;
   color: #323330;
   padding: 0 0.25em;
+  &:empty::before {
+    content: 'JavaScript';
+  }
 }
 
 .TypeScript {
   background-color: #3178c6;
   color: white;
   padding: 0 0.25em;
+  &:empty::before {
+    content: 'TypeScript';
+  }
 }
 
 .big-x {
