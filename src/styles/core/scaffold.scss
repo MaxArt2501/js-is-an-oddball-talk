@@ -26,6 +26,19 @@ pre p-fragment {
     }
   }
 
+  &.vertical-collapsed {
+    interpolate-size: allow-keywords;
+    display: block;
+    transition: opacity var(--fragment-duration, 300ms), height var(--fragment-duration, 300ms);
+    height: 0;
+    overflow: clip;
+    white-space: inherit;
+
+    &[aria-hidden='false'] {
+      height: auto;
+    }
+  }
+
   code[class*='language-'] {
     white-space: pre;
     background: none;

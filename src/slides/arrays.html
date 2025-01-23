@@ -22,11 +22,11 @@ array[index] = x  &#x27f6;  array.with(index, x)
 <p-fragment><code class="language-js">array.length = n</code></p-fragment><p-fragment>  &#x27f6;  <code class="language-js">array.slice(0, n)</code></p-fragment></pre>
 </p-slide>
 <p-slide>
-  <pre class="big self-center"><code class="language-js">Array(3)</code>
-<p-fragment>> [<i>empty &times; 3</i>]</p-fragment>
+  <pre class="big self-center"><code class="language-js input">Array(3)</code>
+<p-fragment class="output">[<i>empty &times; 3</i>]</p-fragment>
 
-<p-fragment><code class="language-js">Array(3).with()</code></p-fragment>
-<p-fragment>> [<i>undefined, undefined, undefined</i>]</p-fragment></pre>
+<p-fragment><code class="language-js input">Array(3).with()</code></p-fragment>
+<p-fragment class="output">[<i>undefined, undefined, undefined</i>]</p-fragment></pre>
   <p-notes>Careful that these new non-mutating methods makes <i>dense</i> a sparse array!</p-notes>
 </p-slide>
 <p-slide class="center">

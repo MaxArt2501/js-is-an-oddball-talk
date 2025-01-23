@@ -144,42 +144,42 @@ $motion-entrance-timing-fn: cubic-bezier(0.3, 1.21, 0.79, 0.91);
 
 @keyframes from-top {
   0% {
-    transform: translateY(-2em);
+    translate: 0 -2em;
   }
   100% {
-    transform: translateY(0em);
+    translate: 0 0em;
   }
 }
 @keyframes from-right {
   0% {
-    transform: translateX(4em);
+    translate: 4em 0;
   }
   100% {
-    transform: translateX(0em);
+    translate: 0em 0;
   }
 }
 @keyframes from-bottom {
   0% {
-    transform: translateY(2em);
+    translate: 0 2em;
   }
   100% {
-    transform: translateY(0em);
+    translate: 0 0em;
   }
 }
 @keyframes from-left {
   0% {
-    transform: translateX(-4em);
+    translate: -4em 0;
   }
   100% {
-    transform: translateX(0em);
+    translate: 0em 0;
   }
 }
 @keyframes from-above {
   0% {
-    transform: scale(3);
+    scale: 3;
   }
   100% {
-    transform: scale(1);
+    scale: 1;
   }
 }
 
@@ -254,4 +254,16 @@ $fade-border-image-y: linear-gradient(
 
 .revert {
   all: revert-layer;
+}
+
+code:is(.output, .input)::before {
+  display: inline-block;
+  width: 2ch;
+  color: white;
+}
+code.input::before {
+  content: '\2b9e';
+}
+code.output::before {
+  content: '\2b9c';
 }

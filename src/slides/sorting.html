@@ -42,20 +42,20 @@
 ]</code><p-fragment><code class="language-js">.sort((a, b) => 😭);</code></p-fragment></pre>
 </p-slide>
 <p-slide>
-  <pre class="big self-center"><code class="language-js">['File 2', ...].sort((a, b) =></code><p-fragment><code class="language-js">
+  <pre class="big self-center"><code class="language-js input">['File 2', ...].sort((a, b) =></code><p-fragment><code class="language-js">
   a.localeCompare(b, undefined, { numeric: true })
 </code></p-fragment><code class="language-js">);</code>
-<p-fragment class="self-center"><code class="language-js">> ['Die Hard', 'Die Hard 2: Die Harder',
+<p-fragment class="self-center"><code class="language-js output">['Die Hard', 'Die Hard 2: Die Harder',
   'File 2', 'fiLE 15', 'SS1 Aurelia',
   'SS4 Salaria', 'SS16 Adriatica']</code></p-fragment></pre>
 </p-slide>
 <p-slide>
-  <pre class="big self-center"><code class="language-js">[{ name: 'Venus', population: 0 },
+  <pre class="big self-center"><code class="language-js input">[{ name: 'Venus', population: 0 },
   { name: 'Earth', population: 8e9 },
   { name: 'Mars', population: 0 }].sort(</code><p-fragment><code class="language-js">
   (a, b) => a.name.localeCompare(b.name)
 </code></p-fragment><code class="language-js">);</code>
-<p-fragment class="self-center"><code class="language-js">> [{ name: 'Earth', population: 8e9 },
+<p-fragment class="self-center"><code class="language-js output">[{ name: 'Earth', population: 8e9 },
   { name: 'Mars', population: 0 },
   { name: 'Venus', population: 0 }]</code></p-fragment></pre>
 </p-slide>

@@ -1,6 +1,6 @@
 <p-slide>
-  <pre class="big self-center"><code class="language-js">Object.entries(null)</code>
-<p-fragment><code class="language-error">> Uncaught TypeError: Cannot convert
+  <pre class="big self-center"><code class="language-js input">Object.entries(null)</code>
+<p-fragment><code class="language-error output">Uncaught TypeError: Cannot convert
   undefined or null to object</code></p-fragment>
 
 <p-fragment><code class="language-js">typeof null
@@ -14,9 +14,19 @@
 <code class="language-js">}</code></pre>
 </p-slide>
 <p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-js">class Oddball</code><p-fragment class="collapsed"><code class="language-js"> extends null</code></p-fragment><code class="language-js"> {}</code></pre>
+
+  <pre class="big self-center language-js"><p-fragment><code class="language-js input">new Oddball</code></p-fragment>
+<p-fragment><code class="language-error output">Uncaught TypeError: Super constructor
+  null of Oddball is not a constructor</code></p-fragment></pre>
+  <p-notes> Why whould you allow me to do that in the first place?! Just to use it for static properties and methods? Way to make Java developers happy, I guess! </p-notes>
+</p-slide>
+<p-slide>
   <pre class="big self-center"><code class="language-js">const obj = null;</code>
-<p-fragment><code class="language-js">const result = { foo: 42, ...obj };</code></p-fragment>
-<p-fragment><code class="language-js">> { foo: 42 }</code></p-fragment>
+<p-fragment><code class="language-js input">const result = { foo: 42, ...obj };</code></p-fragment>
+<p-fragment><code class="language-js output">{ foo: 42 }</code></p-fragment>
 </pre>
 </p-slide>
 <p-slide>
@@ -45,19 +55,10 @@ const hasItem: boolean = shouldHaveItem(item);</code>
 
 <p-fragment><code class="language-ts">const payload = {
   action: 'add',
-  ...(hasItem ? item : {})</code><p-fragment><img
-    src="img/strike.svg#svgView(preserveAspectRatio(none))"
-    alt="A strike through the text '...(hasItem ? item : {})' in the code"
-    class="strike"
-    style="top: 5lh; left: 2ch; width: 24ch"
-/></p-fragment>
+  ...(hasItem ? item : {})</code><p-fragment class="the-stroke" aria-label="A strike through the text '...(hasItem ? item : {})' in the code"
+    style="top: calc(.5em + 5lh);left: calc(.667em + 2ch);width: 24ch;"
+></p-fragment>
   <p-fragment><code class="language-js">...hasItem && item</code></p-fragment>
 };</p-fragment></pre>
-  <p-fragment
-    ><img
-      src="img/marker-circle.svg#svgView(preserveAspectRatio(none))"
-      alt="A marker circle around '...hasItem && item' in the code"
-      class="from-above"
-      style="top: 64%; width: 9.7em; left: 11%; height: 1.8em"
-  /></p-fragment>
+  <p-fragment class="the-circle" aria-label="A marker circle around '...hasItem && item' in the code" style="top: 64%; width: 9.7em; left: 11%; height: 1.8em"></p-fragment>
 </p-slide>
