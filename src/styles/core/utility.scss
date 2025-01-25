@@ -263,7 +263,9 @@ code:is(.output, .input)::before {
 }
 code.input::before {
   content: '\2b9e';
+  content: '\25b6';
 }
 code.output::before {
   content: '\2b9c';
+  content: '\25c0';
 }

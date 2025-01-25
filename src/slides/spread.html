@@ -3,8 +3,8 @@
 <p-fragment><code class="language-error output">Uncaught TypeError: Cannot convert
   undefined or null to object</code></p-fragment>
 
-<p-fragment><code class="language-js">typeof null
-> 'object'</code></p-fragment></pre>
+<p-fragment><code class="language-js input">typeof null</code>
+<code class="language-js output">'object'</code></p-fragment></pre>
 </p-slide>
 <p-slide>
   <pre
@@ -17,47 +17,14 @@
 <p-slide>
   <pre class="big self-center"><code class="language-js">if (typeof item === 'object!') {</code>
   <p-fragment>🤩</p-fragment><p-fragment class="the-stroke" style="width: 25ch; top: .5em; left: calc(.667em + 4ch)"></p-fragment>
-<code class="language-js">}</code>
-
-<p-fragment><code class="language-js">const isActualObject = x =>
-  typeof x === 'object' && x !== null;</code></p-fragment></pre>
+<code class="language-js">}</code></pre>
 </p-slide>
 <p-slide>
-  <pre
-    class="big self-center"
-  ><code class="language-js">class Oddball</code><p-fragment class="collapsed"><code class="language-js"> extends null</code></p-fragment><code class="language-js"> {}</code></pre>
-
-  <pre class="big self-center language-js"><p-fragment><code class="language-js input">new Oddball</code></p-fragment>
-<p-fragment><code class="language-error output">Uncaught TypeError: Super constructor
-  null of Oddball is not a constructor</code></p-fragment></pre>
-  <p-notes>
-    <p>Why whould you allow me to do that in the first place?! Just to use it for static properties and methods? Way to make Java developers happy, I guess!</p>
-    <p>But then again, what does extending "null" even mean? Maybe something like&hellip;</p>
-  </p-notes>
-</p-slide>
-<p-slide>
-  <pre class="big self-center"><code class="language-js">class Oddball extends null {</code><p-fragment class="vertical-collapsed"><code
-    class="language-js">  static lang = 'JavaScript';
-</code></p-fragment><p-fragment class="vertical-collapsed"><code
-  class="language-js">  static getVersion() {
-    return `ES${new Date().getFullYear()}`;
-  };
-</code></p-fragment><p-fragment class="vertical-collapsed"><code
-  class="language-js">  static {
-    this.lang = 'ECMAScript';
-  };
-</code></p-fragment>}</pre>
-  <p-fragment class="the-circle" style="width: 14em; top: 6.5em; left: 2.4em; height: 6em"></p-fragment>
-</p-slide>
-<p-slide>
-  <pre class="big self-center"><code class="language-js">class JavaScript {
-  static {
-    this.version = `ES${new Date().getFullYear()}`;
-  };
-}</code>
-
-<p-fragment><code class="language-js input">JavaScript.version</code></p-fragment>
-<p-fragment><code class="language-js output">'ES2025'</code></p-fragment></pre>
+  <pre class="big self-center"><code class="language-js">Array.isArray(value)</code></pre>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">Object.isObject(value)</code></pre>
+  </p-fragment>
+  <p-fragment class="center">🙏</p-fragment>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">const obj = null;</code>

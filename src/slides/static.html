@@ -1,0 +1,87 @@
+<p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-js">class Oddball</code><p-fragment class="collapsed"><code class="language-js"> extends null</code></p-fragment><code class="language-js"> {}</code></pre>
+
+  <pre class="big self-center language-js"><p-fragment><code class="language-js input">new Oddball</code></p-fragment>
+<p-fragment><code class="language-error output">Uncaught TypeError: Super constructor
+  null of Oddball is not a constructor</code></p-fragment></pre>
+  <p-notes>
+    <p>Why whould you allow me to do that in the first place?! Just to use it for static properties and methods? Way to make Java developers happy, I guess!</p>
+  </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">class Oddball extends null {</code><p-fragment class="vertical-collapsed"><code
+    class="language-js">  static lang = 'JavaScript';
+</code></p-fragment><p-fragment class="vertical-collapsed"><code
+  class="language-js">  static getVersion() {
+    return `ES${new Date().getFullYear()}`;
+  }
+</code></p-fragment><p-fragment class="vertical-collapsed"><code
+  class="language-js">  static {
+    this.lang = 'ECMAScript';
+  }
+</code></p-fragment>}</pre>
+  <p-fragment class="the-circle" style="width: 14em; top: 6.5em; left: 2.4em; height: 6em"></p-fragment>
+  <p-notes>Wait a minute, what's this?</p-notes>
+</p-slide>
+<p-slide>
+  <h3 class="center no-margins">Static class initialization blocks</h3>
+  <pre class="big self-center"><code class="language-js">class JavaScript {
+  static {
+    this.version = `ES${new Date().getFullYear()}`;
+  }
+}</code>
+
+<p-fragment><code class="language-js input">JavaScript.version</code></p-fragment>
+<p-fragment><code class="language-js output">'ES2025'</code></p-fragment></pre>
+<script>document.currentScript.parentElement.querySelector('.output').innerHTML = `'ES${new Date().getFullYear()}'`;</script>
+<p-notes>Wait, this is pretty much&hellip; not interesting. Because it can be easily rewritten as&hellip;</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">class JavaScript {}
+
+JavaScript.version =
+  `ES${new Date().getFullYear()}`;</code></pre>
+  <p-notes>
+    <p>
+      Actually, most of the examples you'll find online about static initialization blocks are like this. You may say "wow, this is cool!",
+      but actually you'd use an unfamiliar syntax to accomplish something you already know how to do. So what's the point?
+    </p>
+    <p>
+      If we want to really understand why we should use SIBs, we need a case where it takes advantage of the fact that's defined
+      <em>inside a class</em>, and thus has access to a wider scope. Let's see an example.
+    </p>
+  </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-ts">class Safe {</code><p-fragment class="vertical-collapsed"><code class="language-ts">  #secret = Math.random();
+</code></p-fragment><p-fragment class="vertical-collapsed" index="1"><code class="language-ts">  get secret() {
+    return this.#secret;
+  }</code>
+</p-fragment>}
+</pre>
+  <p-notes>
+    Suppose we want to read the secret from an instance of <code>Safe</code>. We could expose a public method, but that would defy the purpose of
+    private fields. Instead, we don't want consumers to have access to the secrect like we do.
+  </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><p-fragment class="vertical-collapsed" index="1"><code
+    class="language-ts">let readSecret: (safe: Safe) => number;
+</code></p-fragment><code class="language-ts">class Safe {
+  #secret = Math.random();
+</code></p-fragment><p-fragment class="vertical-collapsed" index="1"><code class="language-ts">  static {
+    readSecret = (safe) => safe.#secret;
+  }</code>
+</p-fragment>}
+<p-fragment class="vertical-collapsed" index="1"><code class="language-js input">readSecret(new Safe)</code>
+<code class="language-js output">0.8331317890625574</code></p-fragment></pre>
+  <p-notes>
+    So, we want a function that we're going to read the private secret from a class instance. But we won't expose it to the outside world.
+    And how are we going to do that? By using static initialization blocks, which <em>can</em> access to private fields. Sneaky, sneaky!
+  </p-notes>
+  <p-notes>
+    And speaking of objects&hellip;
+  </p-notes>
+</p-slide>
