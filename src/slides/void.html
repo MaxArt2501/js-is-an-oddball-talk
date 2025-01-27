@@ -29,17 +29,20 @@
 <p-slide>
   <pre
     class="big self-center"
-  ><code class="language-html">&lt;button onclick="</code><p-fragment class="collapsed" index="1"><code class="language-js">void </code></p-fragment><code class="language-html">doSomething()">
+  ><code class="language-html clip" style="width: 17ch;">&lt;button onclick=""></code><p-fragment class="collapsed" index="1"><code class="language-js">void </code></p-fragment><code class="language-js">doSomething()</code><code class="language-html">">
   Click me!
-&lt;/button></code></pre>
+&lt;/button></code>                           &nbsp;</pre>
 
   <p-fragment index="0" class="self-center">
-    <pre class="big"><code class="language-js">function doSomething() {
+    <pre class="big"><code class="language-js">function doSomething() {            &nbsp;
   ...
   return false;
 }</code></pre>
   </p-fragment>
-  <p-notes>Don't use legacy event registration</p-notes>
+  <p-notes>
+    This is called "traditional event registration". Thing is, nobody uses that anymore - even if your framework of choice <em>seems</em> it does - except for quick-and-dirty
+    examples. So let's see something more modern.
+  </p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">useEffect(doSomething);</code></pre>
