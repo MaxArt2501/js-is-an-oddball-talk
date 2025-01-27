@@ -1,0 +1,49 @@
+<p-slide>
+  <pre class="big self-center"><code class="language-js">out: {
+  while (someCondition()) {
+    while (someOtherCondition()) {
+      // ...
+      break out;
+    }
+  }
+}</code></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><p-fragment class="vertical-collapsed"><code class="language-ts">const list: (Item | null)[] = ...;
+
+</code></p-fragment><code class="language-ts">const filtered = list.filter(Boolean);</code><p-fragment class="code-popover" style="top: 2lh;left: 10ch"><code class="language-ts">const filtered: (Item | null)[]</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <h1 class="center">DO<p-fragment class="collapsed">O</p-fragment>M</h1>
+</p-slide>
+<p-slide>
+  <pre class="huge self-center"><code class="language-js">document.all</code></pre>
+</p-slide>
+<p-slide>
+  <pre class="huge self-center"><code class="language-js input">typeof document.all</code>
+<code class="language-js output">'undefined'</code></pre>
+  <p-notes>You shouldn't use this, anyway. Now you could say, "How am I supposed to get the list of all elements, then?"</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="huge self-center"><code class="language-js">document.querySelectorAll('*')</code></pre>
+</p-slide>
+<p-slide>
+  <ul class="center">
+    <li>Text nodes?</li>
+    <li><p-fragment>Comments?</p-fragment></li>
+    <li>
+      <p-fragment><code>&lt;select></code>s with no value?</p-fragment>
+    </li>
+    <li><p-fragment>Elements wider than 80px?</p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h1 class="center">☝️</h1>
+</p-slide>
+<p-slide>
+  <h1 class="center">✌️</h1>
+</p-slide>
+<p-slide>
+  <pre class="huge self-center"><code class="language-js">TreeWalker</code></pre>
+  <pre class="huge self-center"><code class="language-js">NodeIterator</code></pre>
+</p-slide>
