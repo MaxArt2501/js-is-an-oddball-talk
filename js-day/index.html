@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript is an oddball</title>
+    <base href=".." />
+    <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="vendor/prismjs/themes/prism.css" />
+    <link rel="stylesheet" href="vendor/prismjs/themes/prism-okaidia.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/print.css" media="print" />
+    <link rel="stylesheet" href="css/presentation.css" />
+  </head>
+
+  <body>
+    <p-deck> <!--slide:cover--><p-slide class="cover">
+  <img src="img/logo-gellify.svg" alt="GELLIFY Logo" class="full-media" />
+  <h1>JavaScript is an oddball</h1>
+  <figure>
+    <img src="img/js-day.svg" alt="JS Day Logo" />
+    <figcaption>Bologna, <time datetime="2025-04-07">2025-04-07/08</time></figcaption>
+  </figure>
+  <h4>
+    Massimo Artizzu
+    <small>Web Architect, <a href="https://gellify.com/" class="gellify">Gellify</a></small>
+  </h4>
+</p-slide>
+<p-slide class="justify-start">
+  <gfy-blob
+    clearcoatroughness="0.4"
+    clearcoat="0.23"
+    clearcolor="#141411"
+    color="#2a0b29"
+    envmap="img/envmap.jpg"
+    envmapintensity="0.95"
+    fixnormals=""
+    frequency="0.01"
+    metalness="0.64"
+    numberofwaves="1.47"
+    reflectivity="1"
+    roughness="0"
+    surfacepoleamount="1"
+    surfacedistort="3.2"
+    surfacefrequency="0.97"
+    surfacespeed="0.5"
+  >
+    <gfy-spotlight color="#c556c6" intensity="2.68" distance="14.47" angle="0.85" penumbra="0.45" decay="0.24" x="-4.47" y="2.4" z="0.53"></gfy-spotlight>
+    <gfy-spotlight color="#30ffe2" intensity="2.08" distance="8.73" angle="0.63" penumbra="1" decay="0" x="-1.6" y="-5.33" z="3.67"></gfy-spotlight>
+    <gfy-spotlight color="#ffffff" intensity="2.03" distance="0" angle="0.35" penumbra="1" decay="1" x="6.13" y="2.67" z="2.13"></gfy-spotlight>
+    <gfy-spotlight color="#ff4cfa" intensity="1.25" distance="7" angle="0.82" penumbra="1" decay="0.5" x="0.53" y="2.4" z="3.4"></gfy-spotlight>
+    <gfy-spotlight color="#ffffff" intensity="0.63" distance="7" angle="0.79" penumbra="1" decay="0.5" x="-3" y="-3" z="6.2"></gfy-spotlight>
+  </gfy-blob>
+  <div class="my-data">
+    <img src="img/maxart.jpg" alt="My face" class="my-face" />
+    <h2>Massimo Artizzu</h2>
+    <p>
+      Web Architect<br />
+      @<a href="https://gellify.com" class="gellify">Gellify</a>
+    </p>
+  </div>
+  <div class="my-info">
+    <h4>
+      <a href="https://github.com/MaxArt2501"><img src="img/github.svg" alt="GitHub logo" /></a> /
+      <a href="https://mastodon.social/MaxArt2501"><img src="img/mastodon.svg" alt="Mastodon logo" /></a> /
+      <a href="https://bsky.app/profile/MaxArt2501.bsky.social"><img src="img/bluesky.svg" alt="BlueSky logo" /></a> /
+      <a href="https://dev.to/MaxArt2501"><img src="img/dev-to.svg" alt="dev.to logo" /></a>
+      @MaxArt2501
+    </h4>
+  </div>
+</p-slide>
+<p-slide class="center">
+  <h3>You can find these slides at</h3>
+  <img src="img/qr-slides.svg" alt="QR Code for the presentation's link" style="height: 7em; margin-bottom: 1em" />
+  <a href="https://maxart2501.github.io/javascript-is-an-oddball-talk/js-day/">maxart2501.github.io/javascript-is-an-oddball-talk/js-day/</a>
+</p-slide><!--/slide:cover-->
+<!--slide:sorting--><p-slide>
+  <pre class="big self-center"><code class="language-js">'Ba' + +'🍌' + 'a'</code></pre>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">[] == ![]</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide class="stack">
+  <pre style="font-size: 25%; white-space: normal; word-break: break-all">
+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+([]+[])[(![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]()[+!+[]+[!+[]+!+[]]]+((!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[+!+[]]+[!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[+[]]+[!+[]+!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[+!+[]])[(![]+[])[!+[]+!+[]+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([]+[])[([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]][([][[]]+[])[+!+[]]+(![]+[])[+!+[]]+((+[])[([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]+[])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]]((!![]+[])[+[]])[([][(!![]+[])[!+[]+!+[]+!+[]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]](([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(![]+[+[]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]]+![]+(![]+[+[]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]])()[([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((![]+[+[]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]])+[])[+!+[]])+([]+[])[(![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]()[+!+[]+[!+[]+!+[]]])())()</pre
+  >
+  <p-fragment style="place-self: center">
+    <pre class="big"><code class="language-js">console.log('JSDay')</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">[2, 13, 1].sort() // [1, 13, 2] 🙄</code></pre>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">[2, 13, 1].sort((a, b) => a - b) // [1, 2, 13] 🎉</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-js">['File 2', 'File 13', 'File 1'].sort(</code><p-fragment class="collapsed"><code class="language-js">...?...</code></p-fragment>)&nbsp;&nbsp;&nbsp;
+
+  </pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">['File 2', 'File 13', 'File 1'].sort((a, b) => {
+  return a.slice(5) - b.slice(5);
+});</code></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">[
+  'File 2',
+  'SS1 Aurelia',
+  'SS16 Adriatica',
+  'fiLE 15',
+  'SS4 Salaria',
+  'Die Hard 2: Die Harder',
+  'Die Hard'
+]</code><p-fragment><code class="language-js">.sort((a, b) => 😭);</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js input">['File 2', ...].sort((a, b) =></code><p-fragment><code class="language-js">
+  a.localeCompare(b, undefined, { numeric: true })
+</code></p-fragment><code class="language-js">);</code>
+<p-fragment class="self-center"><code class="language-js output">['Die Hard', 'Die Hard 2: Die Harder',
+  'File 2', 'fiLE 15', 'SS1 Aurelia',
+  'SS4 Salaria', 'SS16 Adriatica']</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js input">[{ name: 'Venus', population: 0 },
+  { name: 'Earth', population: 8e9 },
+  { name: 'Mars', population: 0 }].sort(</code><p-fragment><code class="language-js">
+  (a, b) => a.name.localeCompare(b.name)
+</code></p-fragment><code class="language-js">);</code>
+<p-fragment class="self-center"><code class="language-js output">[{ name: 'Earth', population: 8e9 },
+  { name: 'Mars', population: 0 },
+  { name: 'Venus', population: 0 }]</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">a.localeCompare(b, locale, options)</code></pre>
+  <p-fragment class="self-center">
+    <div>
+      <h3 class="center">==</h3>
+    </div>
+    <pre class="big"><code class="language-js">const collator = new Intl.Collator(locale, options);
+collator.compare(a, b);</code></pre>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <span class="browser chrome">24</span>
+    <span class="browser firefox">29</span>
+    <span class="browser safari">10</span>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big"><code class="language-js">const collator = new Intl.Collator(locale, options);
+hugeList.sort(collator.compare)</code><p-fragment><code class="language-js">.reverse(); // 🔽</code></p-fragment></pre>
+</p-slide><!--/slide:sorting-->
+<!--slide:arrays--><p-slide>
+  <pre class="big self-center"><code class="language-js">    array.sort()  &#x27f6;  array.toSorted()
+
+ array.reverse()  &#x27f6;  array.toReversed()
+
+  array.splice()  &#x27f6;  array.toSpliced()
+
+array[index] = x  &#x27f6;  array.with(index, x)
+</code></pre>
+  <p-fragment class="self-center">
+    <span class="browser chrome">110</span>
+    <span class="browser firefox">115</span>
+    <span class="browser safari">16</span>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">array.length = n</code><p-fragment>  &#x27f6;  <code class="language-js">array.slice(0, n)</code></p-fragment>
+
+   <p-fragment><code class="language-js">array.fill(0)</code></p-fragment><p-fragment>  &#x27f6;  <code class="language-js">array.toFilled(0)</code></p-fragment><p-fragment class="big-x" style="width: 4em; left: 61%; top: 28%"></p-fragment>
+                      <p-fragment><code class="language-js">array.map(() => 0)</code></p-fragment><p-fragment class="the-stroke" style="width: 18ch; left: 46%; top: 51%"></p-fragment>
+                      <p-fragment><code class="language-js">Array.from(array, () => 0)</code></p-fragment>
+
+</pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js input">Array(3)</code>
+<p-fragment><code class="language-js output">[empty &times; 3]</code></p-fragment>
+
+<p-fragment><code class="language-js input">Array(3).with()</code></p-fragment>
+<p-fragment><code class="language-js output">[undefined, undefined, undefined]</code></p-fragment></pre>
+  <p-notes>Careful that these new non-mutating methods makes <i>dense</i> a sparse array!</p-notes>
+</p-slide>
+<p-slide class="center">
+  <h3><code>null</code></h3>
+  <h3><code>undefined</code></h3>
+  <h3><code>empty</code> ⁉️</h3>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">Array(3).forEach(console.log)</code>
+<p-fragment><code class="language-js">// 🦗</code></p-fragment>
+
+<p-fragment><code class="language-js">Array(2 ** 32 - 1)
+// ⚡</code></p-fragment></pre>
+  <p-notes>
+    Browsers be like: "Ah! You thought I'd give you 32 GB of memory!? We don't <i>have</i> 32 GB of memory, and even if we had, no way I'm allocating them for <i>you</i>! If
+    anything, I'll get them for <i>myself!</i>"
+  </p-notes>
+</p-slide><!--/slide:arrays-->
+<!--slide:void--><p-slide class="center">
+  <h3>Have you seen this 🦄?</h3>
+  <p-fragment>
+    <h3><code>void</code></h3>
+  </p-fragment>
+  <p-fragment><br />(Not to be confused with <span class="TypeScript"></span>'s <code>void</code>)</p-fragment>
+</p-slide>
+<p-slide>
+  <h4 class="center">&ldquo;The <code>void</code> operator evaluates the given expression and then returns <code>undefined</code>.&rdquo;</h4>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-html">&lt;a href="javascript:void(0)">Click me!&lt;/a></code></pre>
+  <p-fragment class="big-x" style="width: 6em; left: 34%; top: 25%"></p-fragment>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-html">&lt;a href="javascript:;">Click me!&lt;/a></code></pre>
+  </p-fragment>
+  <p-notes>Don't do this either: use a button!</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><p-fragment class="collapsed"><code class="language-js">void</code></p-fragment> <code class="language-js">function() { /* ... */ }();</code></pre>
+  <p-fragment class="big-x" style="width: 6em; left: 37%; top: 15%"></p-fragment>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">(function() { /* ... */ })();</code></pre>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">(() => { /* ... */ })();</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-html clip" style="width: 17ch;">&lt;button onclick=""></code><p-fragment class="collapsed" index="1"><code class="language-js">void </code></p-fragment><code class="language-js">doSomething()</code><code class="language-html">">
+  Click me!
+&lt;/button></code>                           &nbsp;</pre>
+
+  <p-fragment index="0" class="self-center">
+    <pre class="big"><code class="language-js">function doSomething() {            &nbsp;
+  ...
+  return false;
+}</code></pre>
+  </p-fragment>
+  <p-notes>
+    This is called "traditional event registration". Thing is, nobody uses that anymore - even if your framework of choice <em>seems</em> it does - except for quick-and-dirty
+    examples. So let's see something more modern.
+  </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">useEffect(doSomething);</code></pre>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">export const doSomething = () => {
+  ...
+  return abortFn;
+};</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">useEffect(doSomething);</code></pre>
+  <p-fragment class="big-x" style="width: 6em; left: 46%; top: 7%"></p-fragment>
+  <p-fragment class="self-center">
+    <pre
+      class="big"
+    ><code class="language-js">useEffect(() => </code><p-fragment class="collapsed" index="1"><code class="language-js">void </code></p-fragment><code class="language-js">doSomething());</code></pre>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">useEffect(() => {
+  return doSomething();
+});</code></pre>
+  </p-fragment>
+  <p-fragment class="big-x" style="width: 6em; left: 37%; top: 52%"></p-fragment>
+  <p-notes>
+    <p>
+      "I can just wrap it in curly braces!" - yes, but code formatters may have a different opinion, and you might just miss the change when they run. So here's a practical use
+      case for <code>void</code>
+    </p>
+    <p>I also think it's nice how it communicates that you want to discard the return value of the function, although some might get confused by this strange keyword</p>
+  </p-notes>
+</p-slide>
+<p-slide>
+  <h3 class="center">
+    <code
+      >@typescript-eslint/<br />
+      no-floating-promises</code
+    >
+  </h3>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">useEffect(() => {</code>
+  <p-fragment class="collapsed"><code class="language-js">void </code></p-fragment><code class="language-js">doSomethingAsync();
+});</code></pre>
+  </p-fragment>
+</p-slide><!--/slide:void-->
+<!--slide:spread--><p-slide>
+  <pre class="big self-center"><code class="language-js input">Object.entries(null)</code>
+<p-fragment><code class="language-error output">Uncaught TypeError: Cannot convert
+  undefined or null to object</code></p-fragment>
+
+<p-fragment><code class="language-js input">typeof null</code>
+<code class="language-js output">'object'</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-js">if (typeof item === 'object'</code><p-fragment class="collapsed"><code class="language-js"> && item !== null</code></p-fragment><code class="language-js">) {</code>
+  <p-fragment>😫</p-fragment>
+<code class="language-js">}</code></pre>
+  <p-notes>How happy would I be if I could replace it with something more useful, like&hellip;</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">if (typeof item === 'object!') {</code>
+  <p-fragment>🤩</p-fragment><p-fragment class="the-stroke" style="width: 25ch; top: .5em; left: calc(.667em + 4ch)"></p-fragment>
+<code class="language-js">}</code></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">Array.isArray(value)</code></pre>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">Object.isObject(value)</code></pre>
+  </p-fragment>
+  <p-fragment class="center">🙏</p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">const obj = null;</code>
+<p-fragment><code class="language-js input">const result = { foo: 42, ...obj };</code></p-fragment>
+<p-fragment><code class="language-js output">{ foo: 42 }</code></p-fragment>
+</pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">result = { foo: 42, ...null };</code>
+
+<p-fragment><code class="language-js">result = { foo: 42, ...void 42 };</code></p-fragment>
+
+<p-fragment><code class="language-js">result = { foo: 42, ...false };</code></p-fragment>
+
+<p-fragment><code class="language-js">result = { foo: 42, ...42 };</code></p-fragment>
+
+<p-fragment><code class="language-js">result = { foo: 42, ...'' };</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-ts">let item: Item | null</code><p-fragment index="1" class="collapsed"><code class="language-js"> = null</code></p-fragment>;
+
+<p-fragment><code class="language-ts">const payload = { action: 'add', ...item };</code></p-fragment><p-fragment index="2" class="code-popover" style="top: 2lh;left: -4ch;--popover-cursor-shift: 40ch"><div data-ts-error="2698">Spread types may only be created from object types.</div>
+<code class="language-typescript">let item: null</code></p-fragment><p-fragment index="1" class="squiggle" style="top: 2lh;left: 33ch">...item</p-fragment></pre>
+  <p-fragment class="self-center" index="2">
+    <pre class="big"><code class="language-js">const payload = Object.assign({ action: 'add' }, item);</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-ts">const item: Item = getItem();
+const hasItem: boolean = shouldHaveItem(item);</code>
+
+<p-fragment><code class="language-ts">const payload = {
+  action: 'add',
+  ...(hasItem ? item : {})</code><p-fragment class="the-stroke" aria-label="A strike through the text '...(hasItem ? item : {})' in the code"
+    style="top: calc(.5em + 5lh);left: calc(.667em + 2ch);width: 24ch;"
+></p-fragment>
+  <p-fragment><code class="language-js">...hasItem && item</code></p-fragment>
+};</p-fragment></pre>
+  <p-fragment class="the-circle" aria-label="A marker circle around '...hasItem && item' in the code" style="top: 64%; width: 9.7em; left: 11%; height: 1.8em"></p-fragment>
+</p-slide><!--/slide:spread-->
+<!--slide:static--><p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-js">class Oddball</code><p-fragment class="collapsed"><code class="language-js"> extends null</code></p-fragment><code class="language-js"> {}</code></pre>
+
+  <pre class="big self-center language-js"><p-fragment><code class="language-js input">new Oddball</code></p-fragment>
+<p-fragment><code class="language-error output">Uncaught TypeError: Super constructor
+  null of Oddball is not a constructor</code></p-fragment></pre>
+  <p-notes>
+    <p>Why whould you allow me to do that in the first place?! Just to use it for static properties and methods? Way to make Java developers happy, I guess!</p>
+  </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">class Oddball extends null {</code><p-fragment class="vertical-collapsed"><code
+    class="language-js">  static lang = 'JavaScript';
+</code></p-fragment><p-fragment class="vertical-collapsed"><code
+  class="language-js">  static getVersion() {
+    return `ES${new Date().getFullYear()}`;
+  }
+</code></p-fragment><p-fragment class="vertical-collapsed"><code
+  class="language-js">  static {
+    this.lang = 'ECMAScript';
+  }
+</code></p-fragment>}</pre>
+  <p-fragment class="the-circle" style="width: 14em; top: 6.5em; left: 2.4em; height: 6em"></p-fragment>
+  <p-notes>Wait a minute, what's this?</p-notes>
+</p-slide>
+<p-slide>
+  <h3 class="center no-margins">Static class initialization blocks</h3>
+  <pre class="big self-center"><code class="language-js">class JavaScript {
+  static {
+    this.version = `ES${new Date().getFullYear()}`;
+  }
+}</code>
+
+<p-fragment><code class="language-js input">JavaScript.version</code></p-fragment>
+<p-fragment><code class="language-js output">'ES2025'</code></p-fragment></pre>
+<script>document.currentScript.parentElement.querySelector('.output').innerHTML = `'ES${new Date().getFullYear()}'`;</script>
+<p-notes>Wait, this is pretty much&hellip; not interesting. Because it can be easily rewritten as&hellip;</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">class JavaScript {}
+
+JavaScript.version =
+  `ES${new Date().getFullYear()}`;</code></pre>
+  <p-notes>
+    <p>
+      Actually, most of the examples you'll find online about static initialization blocks are like this. You may say "wow, this is cool!",
+      but actually you'd use an unfamiliar syntax to accomplish something you already know how to do. So what's the point?
+    </p>
+    <p>
+      If we want to really understand why we should use SIBs, we need a case where it takes advantage of the fact that's defined
+      <em>inside a class</em>, and thus has access to a wider scope. Let's see an example.
+    </p>
+  </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-ts">class Safe {</code><p-fragment class="vertical-collapsed"><code class="language-ts">  #secret = Math.random();
+</code></p-fragment><p-fragment class="vertical-collapsed" index="1"><code class="language-ts">  get secret() {
+    return this.#secret;
+  }</code>
+</p-fragment>}
+</pre>
+  <p-notes>
+    Suppose we want to read the secret from an instance of <code>Safe</code>. We could expose a public method, but that would defy the purpose of
+    private fields. Instead, we don't want consumers to have access to the secrect like we do.
+  </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><p-fragment class="vertical-collapsed" index="1"><code
+    class="language-ts">let readSecret: (safe: Safe) => number;
+</code></p-fragment><code class="language-ts">class Safe {
+  #secret = Math.random();
+</code></p-fragment><p-fragment class="vertical-collapsed" index="1"><code class="language-ts">  static {
+    readSecret = (safe) => safe.#secret;
+  }</code>
+</p-fragment>}
+<p-fragment class="vertical-collapsed" index="1"><code class="language-js input">readSecret(new Safe)</code>
+<code class="language-js output">0.8331317890625574</code></p-fragment></pre>
+  <p-notes>
+    So, we want a function that we're going to read the private secret from a class instance. But we won't expose it to the outside world.
+    And how are we going to do that? By using static initialization blocks, which <em>can</em> access to private fields. Sneaky, sneaky!
+  </p-notes>
+  <p-notes>
+    And speaking of objects&hellip;
+  </p-notes>
+</p-slide><!--/slide:static-->
+<!--slide:json--><p-slide>
+  <h3 class="center"><span class="JavaScript"></span> <p-fragment>Object Notation</p-fragment></h3>
+  <p-fragment class="self-center center">
+    <h1>❤️</h1>
+    <h3 class="JavaScript"></h3>
+  </p-fragment>
+  <p-fragment class="big-x" style="width: 8em; top: 30%; left: calc(50% - 4em)"></p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js input">JSON.stringify({
+  void: undefined,
+  func() {},
+  fn: () => {},
+  symbol: Symbol(),
+  [Symbol('foo')]: 'symbol'
+})</code>
+<p-fragment><code class="language-js output">'{}' // 🙄</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre
+    class="big self-center"
+  ><p-fragment class="the-stroke" aria-label="A strike through the JSON.parse+stringify code" style="width: 46ch"></p-fragment><code class="language-js">const copy = JSON.parse(JSON.stringify(item));</code></pre>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">const copy = structuredClone(item);</code></pre>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <span class="browser chrome">98</span>
+    <span class="browser firefox">94</span>
+    <span class="browser safari">15.4</span>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">{ "bigMcHuge": 12345678901234567890 }</code></pre>
+  <p-notes>
+    Point is, JSONs can have arbitrarily large numbers. It's an interchange format, so it doesn't care about language limitations, not even JavaScript's. But JavaScript has
+    arbitrarily large integers now, doesn't it? They're the BigInts.
+  </p-notes>
+  <pre class="big self-center language-js"><p-fragment><code class="language-js">const bigMcHuge = 12345678901234567890n;</code></p-fragment>
+
+<p-fragment><code class="language-js input">JSON.stringify({ bigMcHuge })</code></p-fragment>
+<p-fragment><code class="language-error output">Uncaught TypeError: Do not know how to
+  serialize a BigInt</code></p-fragment></pre>
+  <p-notes>Haha, of course you know how to serialize a BigInt, you silly goose! Don't BigInts have the <code>toString</code> method?</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">BigInt.prototype.toJSON = function() {
+  return this.toString();
+};</code></pre>
+  <p-fragment>
+    <h1 class="center">😱</h1>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center">
+
+  <code class="language-js">  array.flatten()</code><p-fragment class="big-x" style="width: 4em; left: 21%; top: 11%"></p-fragment><p-fragment>  &#x27f6;  <code class="language-js">array.flat()</code></p-fragment>
+
+  <p-fragment><code class="language-js">array.contains(x)</code></p-fragment><p-fragment class="big-x" style="width: 4em; left: 18%; top: 38%"></p-fragment><p-fragment>  &#x27f6;  <code class="language-js">array.includes(x)</code></p-fragment>
+
+  <p-fragment><code class="language-js">array.groupBy(fn)</code></p-fragment><p-fragment class="big-x" style="width: 4em; left: 18%; top: 65%"></p-fragment><p-fragment>  &#x27f6;  <code class="language-js">Object.groupBy(array, fn)</code></p-fragment>
+
+</pre>
+</p-slide>
+<p-slide>
+  <h3 class="center">
+    &ldquo;&hellip; one of the few cases where patching built-in objects is not explicitly discouraged&rdquo;
+    <br />
+    &mdash; <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt#use_within_json">MDN</a>
+  </h3>
+</p-slide>
+<p-slide>
+  <p-fragment index="1" style="position: absolute; top: 10%; left: 40%">
+    <span class="browser chrome">85</span>
+    <span class="browser firefox">79</span>
+    <span class="browser safari">14</span>
+    <div class="the-arrow" style="top: 75%; left: 33%; width: 0.8em; rotate: 10deg"></div>
+  </p-fragment>
+  <pre
+    class="big self-center"
+  ><code class="language-js">BigInt.prototype.toJSON </code><p-fragment class="collapsed"><code class="language-js">??</code></p-fragment>= <code class="language-js">function() {
+  return this.toString();
+};</code>
+
+<p-fragment index="1"><code class="language-js input">JSON.stringify({ bigMcHuge })</code></p-fragment>
+<p-fragment index="1"><code class="language-js output">'{"bigMcHuge":"12345678901234567890"}'</code></p-fragment></pre>
+  <p-fragment index="1"
+    ><img src="img/pointer.webp" alt="A pointing hand to the opening quotes of the number" class="pointing-start" /><img
+      src="img/pointer.webp"
+      alt="A pointing hand to the closing quotes of the number"
+      class="pointing-end"
+  /></p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">BigInt.prototype.toJSON ??= function() {</code>
+  <p-fragment><code class="language-js">return JSON.rawJSON(this.toString());</code></p-fragment><p-fragment class="the-circle" aria-label="A marker circle around the JSON.rawJSON function name" style="top: 17%;width: 9em;left: 19%;height: 2em;"></p-fragment>
+<code class="language-js">};</code>
+
+<p-fragment><code class="language-js input">JSON.stringify({ bigMcHuge })</code></p-fragment>
+<p-fragment><code class="language-js output">'{"bigMcHuge":12345678901234567890}'</code></p-fragment></pre>
+  <p-fragment style="position: absolute; top: 50%; left: 80%; font-size: 200%">🎉</p-fragment>
+  <p-fragment class="self-center">
+    <span class="browser chrome">114</span>
+    <span class="browser firefox">135</span>
+    <span class="browser safari">-</span>
+  </p-fragment>
+  <p-notes>
+    What does <code>JSON.rawJSON</code> return? A frozen object with no prototype, and a single constant string property named <code>rawJSON</code>, whose value is the function
+    argument and must be a formally correct JSON <i>primitive</i> value. It cannot even be converted to a string, but has an internal flag that allows us to use it with
+    <code>JSON.stringify</code> alone.
+  </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">const raw = '{ "bigMcHuge": 12345678901234567890 }';</code>
+
+<p-fragment><code class="language-js input">JSON.parse(raw)</code></p-fragment>
+<p-fragment><code class="language-js output">{ bigMcHuge: 12345678901234567000 }</code></p-fragment></pre>
+  <p-fragment
+    ><div class="the-circle" aria-label="A marker circle around the last digits of the source" style="top: 34.6%; width: 2em; left: 79.7%; height: 1em"></div>
+    <div class="the-circle" aria-label="A marker circle around the last digits of the output" style="top: 58.7%; width: 2em; left: 58.2%; height: 1em"></div
+  ></p-fragment>
+  <p-notes>Some may say: "I know! I'll use a reviver!" - Except, no you don't.</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">JSON.parse(raw, (key, value) => {</code>
+  <p-fragment><code class="language-js">// value already lost precision :(</code></p-fragment>
+<code class="language-js">});</code></pre>
+</p-slide>
+<p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-js">JSON.parse(raw, (key, value</code><p-fragment class="collapsed"><code class="language-js">, context</code></p-fragment><code class="language-js">) => {   </code>
+  <p-fragment index="1"><code class="language-js">return BigInt(context.source);</code></p-fragment>
+<code class="language-js">});</code></pre>
+  <p-fragment>
+    <pre class="big" style="position: absolute; top: 10%; left: 30%"><code class="language-js">{ source: '12345678901234567890' }</code></pre>
+    <div class="the-arrow" style="top: 24%; left: 63%; scale: -1 1; width: 1.2em"></div>
+  </p-fragment>
+  <p-fragment class="self-center" style="position: absolute; bottom: 25%" index="1">
+    <span class="browser chrome">114</span>
+    <span class="browser firefox">135</span>
+    <span class="browser safari">-</span>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">JSON.parse(raw, (key, value, context) => {</code>
+  <p-fragment><code class="language-js">if (!/\D/.test(context.source))</code></p-fragment>
+    <code class="language-js">return BigInt(context.source);</code>
+  <p-fragment><code class="language-js">return value;</code></p-fragment>
+});</pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">JSON.parse(raw, (key, value, { source }) => {
+  return isBigInt(source) ? BigInt(source) : value;
+});</code><p-fragment class="the-circle" aria-label="A marker circle around 'isBigInt' function name"
+  style="top: 14.7%;width: 6em;left: 15.6%;height: 1.9em;"></p-fragment>
+
+<p-fragment><code class="language-js">const isBigInt = numstr => !/\D/.test(numstr) &&</code></p-fragment>
+  <p-fragment><code class="language-js">numstr.localeCompare(
+    '9007199254740991', undefined, { numeric: true }
+  ) > 0;</code></p-fragment></pre>
+  <p-notes> There must be something that tells us when a numeric string is greater than anothe&hellip; Golly, it's our good friend <code>localeCompare</code>! </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">const numCompare = new Intl.Collator(
+    undefined, { numeric: true }).compare;
+
+const isBigInt = numstr => !/\D/.test(numstr) &&
+  numCompare(numstr, '9007199254740991') > 0;</code></pre>
+</p-slide><!--/slide:json-->
+<!--slide:pattern--><p-slide>
+  <h1 class="center"><code>'use strict';</code></h1>
+</p-slide>
+<p-slide>
+  <h1 class="center">
+    <code>with</code>
+    <p-fragment class="big-x" style="width: 3em; left: 50%; top: 50%; translate: -50% -50%"></p-fragment>
+  </h1>
+</p-slide>
+<p-slide>
+  <h1 class="center">
+    <code>arguments</code>
+    <p-fragment class="big-x" style="width: 3em; left: 50%; top: 50%; translate: -50% -50%"></p-fragment>
+  </h1>
+</p-slide>
+<p-slide>
+  <h1 class="center">
+    <code>arguments.callee</code>
+    <p-fragment class="the-stroke" style="width: 9em; left: 50%; top: 50%; translate: -50% -50%"></p-fragment>
+  </h1>
+</p-slide>
+<p-slide>
+  <h1 class="center">
+    <code>fn.caller</code>
+    <p-fragment class="the-stroke" style="width: 5em; left: 50%; top: 50%; translate: -50% -50%"></p-fragment>
+  </h1>
+</p-slide>
+<p-slide>
+  <h1 class="center">
+    <code>private</code><br />
+    <code>protected</code>
+    <p-fragment class="big-x" style="width: 5em; left: 50%; top: 50%; translate: -50% -50%"></p-fragment>
+  </h1>
+</p-slide>
+<p-slide>
+  <h1 class="center"><code>switch</code></h1>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">switch (count) {
+  case 0:
+    text = 'no result';</code>
+    <p-fragment><code class="language-js">break;</code></p-fragment>
+  <code class="language-js">case 1:</code>
+    ...
+  <p-fragment><code class="language-js">default:
+    text = '';</code></p-fragment>
+}</pre>
+</p-slide>
+<p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-js">if (count === 0</code><p-fragment class="collapsed"><code class="language-js"> && !text</code></p-fragment><code class="language-js">) {
+  text = 'no result';
+} else if (count === 1) {&nbsp;&nbsp;
+  ...
+} else {
+  text = '';
+}</code></pre>
+</p-slide>
+<p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-js">switch (</code><p-fragment class="collapsed"><code class="language-js">true</code></p-fragment>) {<p-fragment class="vertical-collapsed"><code
+    class="language-js">  case count === 0 && !text:
+    text = 'no result';
+    break;
+  ...
+</code></p-fragment>}</pre>
+</p-slide>
+<p-slide>
+  <pre class="self-center"><code class="language-ts">const getContent = async (children: ReactNode) => {
+  switch (true) {
+    case children == null:
+      return '';
+    case typeof children !== 'object':
+      return String(children);
+    case typeof children.then === 'function':
+      return getContent(await children);
+    case Symbol.iterator in children:
+      return Array.from(children, getContent).join('');
+    default:
+      return '';
+  }
+};</code></pre>
+  <p-fragment class="the-circle" style="width: 6em; left: 26.5%; top: 22.5%; height: 1em"></p-fragment>
+  <p-fragment class="the-circle" style="width: 10em; left: 25%; top: 33%; height: 1em"></p-fragment>
+  <p-fragment class="the-circle" style="width: 13em; left: 23.5%; top: 44%; height: 1em"></p-fragment>
+  <p-fragment class="the-circle" style="width: 10em; left: 24.5%; top: 54.5%; height: 1em"></p-fragment>
+</p-slide><!--/slide:pattern-->
+<!--slide:dom--><p-slide>
+  <pre class="big self-center"><code class="language-js">out: {
+  while (someCondition()) {
+    while (someOtherCondition()) {
+      // ...
+      break out;
+    }
+  }
+}</code></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><p-fragment class="vertical-collapsed"><code class="language-ts">const list: (Item | null)[] = ...;
+
+</code></p-fragment><code class="language-ts">const filtered = list.filter(Boolean);</code><p-fragment class="code-popover" style="top: 2lh;left: 10ch"><code class="language-ts">const filtered: (Item | null)[]</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <h1 class="center">DO<p-fragment class="collapsed">O</p-fragment>M</h1>
+</p-slide>
+<p-slide>
+  <pre class="huge self-center"><code class="language-js">document.all</code></pre>
+</p-slide>
+<p-slide>
+  <pre class="huge self-center"><code class="language-js input">typeof document.all</code>
+<code class="language-js output">'undefined'</code></pre>
+  <p-notes>You shouldn't use this, anyway. Now you could say, "How am I supposed to get the list of all elements, then?"</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="huge self-center"><code class="language-js">document.querySelectorAll('*')</code></pre>
+</p-slide>
+<p-slide>
+  <ul class="center">
+    <li>Text nodes?</li>
+    <li><p-fragment>Comments?</p-fragment></li>
+    <li>
+      <p-fragment><code>&lt;select></code>s with no value?</p-fragment>
+    </li>
+    <li><p-fragment>Elements wider than 80px?</p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h1 class="center">☝️</h1>
+</p-slide>
+<p-slide>
+  <h1 class="center">✌️</h1>
+</p-slide>
+<p-slide>
+  <pre class="huge self-center"><code class="language-js">TreeWalker</code></pre>
+  <pre class="huge self-center" style="margin-top: -0.5em"><code class="language-js">NodeIterator</code></pre>
+  <p-fragment class="self-center">
+    <span class="browser chrome">1</span>
+    <span class="browser firefox">4</span>
+    <span class="browser safari">3</span>
+    <p-fragment class="collapsed"><span class="browser ie">9</span></p-fragment>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="self-center no-clip"><code class="language-html">&lt;section>
+  &lt;h3>
+    Latest news
+  &lt;/h3>
+  &lt;article>
+    &lt;h4>
+      JavaScript considered harmful
+    &lt;/h4>
+    &lt;p>
+      To your sanity, to be precise. &hellip;
+    &lt;/p>
+    &hellip;
+  &lt;/article>
+&lt;/section></code><p-fragment class="the-pointer"></p-fragment><p-fragment></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">const walker = document.createTreeWalker(
+  sectionEl,</code><p-fragment class="vertical-collapsed"><code class="language-js"
+>  NodeFilter.SHOW_TEXT</code><p-fragment class="collapsed"><code class="language-js"> | NodeFilter.SHOW_COMMENT</code></p-fragment>,</p-fragment><p-fragment class="vertical-collapsed"><code class="language-js"
+>  (node) => node.data.includes('JavaScript')</code></p-fragment><p-fragment class="vertical-collapsed"><code class="language-js"
+>    ? NodeFilter.FILTER_ACCEPT
+    : NodeFilter.FILTER_REJECT</code></p-fragment>);</pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center no-clip"><code class="language-js">const walker = document.createTreeWalker(
+  sectionEl,
+  NodeFilter.SHOW_TEXT | NodeFilter.SHOW_COMMENT,
+  {
+    acceptNode(node) {
+      return node.data.includes('JavaScript')
+        ? NodeFilter.FILTER_ACCEPT
+        : NodeFilter.FILTER_REJECT;
+    }
+  }
+);</code></pre>
+  <p-notes>&hellip; or you can wrap it in an object with a <code>acceptNode</code> method, because, at this point, why not, we can go full Java 7 on this</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="huge self-center no-clip"><code class="language-js">walker.nextNode()</code><p-fragment class="vertical-collapsed"><code class="language-js"
+>      .previousNode()</code></p-fragment><p-fragment class="vertical-collapsed"><code class="language-js"
+>      .parentNode()
+      .firstChild()
+      .lastChild()
+      .nextSibling()
+      .previousSibling()</code></p-fragment></pre>
+  <p-fragment class="big-x" style="width: 12em; left: 32%; top: 30%"></p-fragment>
+  <p-notes>In a <code>NodeIterator</code> you only have the first two methods</p-notes>
+</p-slide>
+<p-slide> </p-slide><!--/slide:dom-->
+<!--slide:the-end--><p-slide>
+  <h1 class="center"><span>That's all, folks!</span><br />👋</h1>
+</p-slide>
+<p-slide class="gradient-4">
+  <h3 class="center final-link">
+    <a href="https://maxart2501.github.io/javascript-is-an-oddball-talk/js-day/"> maxart2501.github.io/javascript-is-an-oddball-talk/js-day/ </a>
+    <img src="img/qr-slides.svg" alt="QR Code for the presentation's link" />
+  </h3>
+</p-slide><!--/slide:the-end-->
+</p-deck>
+    <div role="progressbar" class="presentation-progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" title="Presentation progress"></div>
+    <div role="toolbar" class="presentation-toolbar">
+      <button type="button" class="toggle-mode" title="Toggle speaker mode" aria-label="Toggle speaker mode (Alt-M)">
+        <svg viewBox="0 0 1 1">
+          <path stroke-width="0.1" stroke="currentColor" fill="none" d="M.05 .5h.6v-.45h-.6v.9h.6v-.45M.75 .05h.25M.75 .2h.25M.75 .35h.25" />
+        </svg>
+      </button>
+      <button type="button" class="fullscreen" title="Toggle fullscreen mode" aria-label="Toggle fullscreen mode">
+        <svg viewBox="0 0 1 1">
+          <g stroke="currentColor" fill="none" stroke-width="0.1">
+            <path d="M.05 .3v-.25h.25M.7 .05h.25v.25M.95 .7v.25h-.25M.3 .95h-.25v-.25" />
+            <path d="M.05 .3h.25v-.25M.7 .05v.25h.25M.95 .7h-.25v.25M.3 .95v-.25h-.25" />
+          </g>
+        </svg>
+      </button>
+    </div>
+    <nav class="presentation-nav">
+      <button type="button" class="previous" title="Go backward" aria-label="Go backward"></button>
+      <button type="button" class="next" title="Go forward" aria-label="Go forward"></button>
+    </nav>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/presentation.js"></script>
+    <script defer type="module" src="js/blob.js"></script>
+    <script defer src="vendor/prismjs/prism.js"></script>
+    <script defer src="vendor/prismjs/components/prism-javadoclike.js"></script>
+    <script defer src="vendor/prismjs/components/prism-typescript.js"></script>
+    <script defer src="vendor/prismjs/components/prism-jsdoc.js"></script>
+  </body>
+</html>
