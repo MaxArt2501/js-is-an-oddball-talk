@@ -45,5 +45,61 @@
 </p-slide>
 <p-slide>
   <pre class="huge self-center"><code class="language-js">TreeWalker</code></pre>
-  <pre class="huge self-center"><code class="language-js">NodeIterator</code></pre>
+  <pre class="huge self-center" style="margin-top: -0.5em"><code class="language-js">NodeIterator</code></pre>
+  <p-fragment class="self-center">
+    <span class="browser chrome">1</span>
+    <span class="browser firefox">4</span>
+    <span class="browser safari">3</span>
+    <p-fragment class="collapsed"><span class="browser ie">9</span></p-fragment>
+  </p-fragment>
 </p-slide>
+<p-slide>
+  <pre class="self-center no-clip"><code class="language-html">&lt;section>
+  &lt;h3>
+    Latest news
+  &lt;/h3>
+  &lt;article>
+    &lt;h4>
+      JavaScript considered harmful
+    &lt;/h4>
+    &lt;p>
+      To your sanity, to be precise. &hellip;
+    &lt;/p>
+    &hellip;
+  &lt;/article>
+&lt;/section></code><p-fragment class="the-pointer"></p-fragment><p-fragment></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">const walker = document.createTreeWalker(
+  sectionEl,</code><p-fragment class="vertical-collapsed"><code class="language-js"
+>  NodeFilter.SHOW_TEXT</code><p-fragment class="collapsed"><code class="language-js"> | NodeFilter.SHOW_COMMENT</code></p-fragment>,</p-fragment><p-fragment class="vertical-collapsed"><code class="language-js"
+>  (node) => node.data.includes('JavaScript')</code></p-fragment><p-fragment class="vertical-collapsed"><code class="language-js"
+>    ? NodeFilter.FILTER_ACCEPT
+    : NodeFilter.FILTER_REJECT</code></p-fragment>);</pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center no-clip"><code class="language-js">const walker = document.createTreeWalker(
+  sectionEl,
+  NodeFilter.SHOW_TEXT | NodeFilter.SHOW_COMMENT,
+  {
+    acceptNode(node) {
+      return node.data.includes('JavaScript')
+        ? NodeFilter.FILTER_ACCEPT
+        : NodeFilter.FILTER_REJECT;
+    }
+  }
+);</code></pre>
+  <p-notes>&hellip; or you can wrap it in an object with a <code>acceptNode</code> method, because, at this point, why not, we can go full Java 7 on this</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="huge self-center no-clip"><code class="language-js">walker.nextNode()</code><p-fragment class="vertical-collapsed"><code class="language-js"
+>      .previousNode()</code></p-fragment><p-fragment class="vertical-collapsed"><code class="language-js"
+>      .parentNode()
+      .firstChild()
+      .lastChild()
+      .nextSibling()
+      .previousSibling()</code></p-fragment></pre>
+  <p-fragment class="big-x" style="width: 12em; left: 32%; top: 30%"></p-fragment>
+  <p-notes>In a <code>NodeIterator</code> you only have the first two methods</p-notes>
+</p-slide>
+<p-slide> </p-slide>

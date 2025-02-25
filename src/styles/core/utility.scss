@@ -47,6 +47,10 @@
   text-transform: uppercase;
 }
 
+.no-clip.no-clip {
+  overflow: visible;
+}
+
 .meme-text {
   position: relative;
   z-index: 1;
@@ -301,5 +305,17 @@ code {
   &.clip {
     display: inline-block;
     overflow: clip;
+  }
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+
+@for $i from 1 through 7 {
+  .rotate-#{$i * 45} {
+    rotate: $i * 45deg;
   }
 }

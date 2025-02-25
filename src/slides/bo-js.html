@@ -1,0 +1,309 @@
+<p-slide>
+  <h3>JavaScript&hellip;</h3>
+  <p-fragment class="self-center">
+    <img src="img/bojs.svg" class="bojs-oddball" alt="BolognaJS logo" />
+  </p-fragment>
+  <p-fragment class="self-end">
+    <h3>&hellip; is an oddball</h3>
+  </p-fragment>
+</p-slide>
+<p-slide class="justify-start">
+  <gfy-blob
+    clearcoatroughness="0.4"
+    clearcoat="0.23"
+    clearcolor="#141411"
+    color="#2a0b29"
+    envmap="img/envmap.jpg"
+    envmapintensity="0.95"
+    fixnormals=""
+    frequency="0.01"
+    metalness="0.64"
+    numberofwaves="1.47"
+    reflectivity="1"
+    roughness="0"
+    surfacepoleamount="1"
+    surfacedistort="3.2"
+    surfacefrequency="0.97"
+    surfacespeed="0.5"
+  >
+    <gfy-spotlight color="#c556c6" intensity="2.68" distance="14.47" angle="0.85" penumbra="0.45" decay="0.24" x="-4.47" y="2.4" z="0.53"></gfy-spotlight>
+    <gfy-spotlight color="#30ffe2" intensity="2.08" distance="8.73" angle="0.63" penumbra="1" decay="0" x="-1.6" y="-5.33" z="3.67"></gfy-spotlight>
+    <gfy-spotlight color="#ffffff" intensity="2.03" distance="0" angle="0.35" penumbra="1" decay="1" x="6.13" y="2.67" z="2.13"></gfy-spotlight>
+    <gfy-spotlight color="#ff4cfa" intensity="1.25" distance="7" angle="0.82" penumbra="1" decay="0.5" x="0.53" y="2.4" z="3.4"></gfy-spotlight>
+    <gfy-spotlight color="#ffffff" intensity="0.63" distance="7" angle="0.79" penumbra="1" decay="0.5" x="-3" y="-3" z="6.2"></gfy-spotlight>
+  </gfy-blob>
+  <div class="my-data">
+    <img src="img/maxart.jpg" alt="My face" class="my-face" />
+    <h2>Massimo Artizzu</h2>
+    <p>
+      Web Architect<br />
+      @<a href="https://gellify.com" class="gellify">Gellify</a>
+    </p>
+  </div>
+  <div class="my-info">
+    <h4>
+      <a href="https://github.com/MaxArt2501"><img src="img/github.svg" alt="GitHub logo" /></a> /
+      <a href="https://mastodon.social/MaxArt2501"><img src="img/mastodon.svg" alt="Mastodon logo" /></a> /
+      <a href="https://bsky.app/profile/MaxArt2501.bsky.social"><img src="img/bluesky.svg" alt="BlueSky logo" /></a> /
+      <a href="https://dev.to/MaxArt2501"><img src="img/dev-to.svg" alt="dev.to logo" /></a>
+      @MaxArt2501
+    </h4>
+  </div>
+</p-slide>
+<p-slide class="center">
+  <h3>You can find these slides at</h3>
+  <img src="img/qr-slides-bojs.svg" alt="QR Code for the presentation's link" style="height: 7em; margin-bottom: 1em" />
+  <a href="https://maxart2501.github.io/javascript-is-an-oddball-talk/bo-js/">maxart2501.github.io/javascript-is-an-oddball-talk/bo-js/</a>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">'Ba' + +'🍌' + 'a'</code></pre>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">[] == ![]</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">[2, 13, 1].sort(</code><p-fragment class="collapsed"><code class="language-js">(a, b) => a - b</code></p-fragment>)</pre>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">['File 2', 'File 13', 'File 1'].sort(</code><p-fragment class="vertical-collapsed"><code class="language-js">  (a, b) => {
+    return a.slice(5) - b.slice(5);
+  }</code></p-fragment>)</pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">[
+  'File 2',
+  'SS1 Aurelia',
+  'SS16 Adriatica',
+  'fiLE 15',
+  'SS4 Salaria',
+  'Die Hard 2: Die Harder',
+  'Die Hard'
+]</code><p-fragment><code class="language-js">.sort((a, b) => 😭);</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js input">['File 2', ...].sort((a, b) =></code><p-fragment><code class="language-js">
+  a.localeCompare(b, undefined, { numeric: true })
+</code></p-fragment><code class="language-js">);</code>
+<p-fragment class="self-center"><code class="language-js output">['Die Hard', 'Die Hard 2: Die Harder',
+  'File 2', 'fiLE 15', 'SS1 Aurelia',
+  'SS4 Salaria', 'SS16 Adriatica']</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">a.localeCompare(b, locale, options)</code></pre>
+  <p-fragment class="self-center">
+    <div>
+      <h3 class="center">==</h3>
+    </div>
+    <pre class="big"><code class="language-js">const collator = new Intl.Collator(locale, options);
+collator.compare(a, b);</code></pre>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <span class="browser chrome">24</span>
+    <span class="browser firefox">29</span>
+    <span class="browser safari">10</span>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js input">Object.entries(null)</code>
+<p-fragment><code class="language-error output">Uncaught TypeError: Cannot convert
+  undefined or null to object</code></p-fragment>
+
+<p-fragment><code class="language-js input">typeof null</code>
+<code class="language-js output">'object'</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-js">if (typeof item === 'object'</code><p-fragment class="collapsed"><code class="language-js"> && item !== null</code></p-fragment><code class="language-js">) {</code>
+  <p-fragment>🌰🌰</p-fragment>
+<code class="language-js">}</code></pre>
+  <p-notes>How happy would I be if I could replace it with something more useful, like&hellip;</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">const obj = null;</code>
+<p-fragment><code class="language-js input">const result = { foo: 42, ...obj };</code></p-fragment>
+<p-fragment><code class="language-js output">{ foo: 42 }</code></p-fragment>
+</pre>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">result = { foo: 42, ...void 42 };
+result = { foo: 42, ...42 };
+result = { foo: 42, ...'' };
+result = { foo: 42, ...false };</code>
+<p-fragment class="collapsed"><code class="language-js">result = { foo: 42, ...isSpread && item };</code></p-fragment></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-js">class Oddball</code><p-fragment class="collapsed"><code class="language-js"> extends null</code></p-fragment><code class="language-js"> {}</code></pre>
+
+  <pre class="big self-center language-js"><p-fragment><code class="language-js input">new Oddball</code></p-fragment>
+<p-fragment><code class="language-error output">Uncaught TypeError: Super constructor
+  null of Oddball is not a constructor</code></p-fragment></pre>
+  <p-notes>
+    <p>Why whould you allow me to do that in the first place?! Just to use it for static properties and methods? Way to make Java developers happy, I guess!</p>
+  </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">class Oddball extends null {</code><p-fragment class="vertical-collapsed"><code
+    class="language-js">  static lang = 'JavaScript';
+</code></p-fragment><p-fragment class="vertical-collapsed"><code
+  class="language-js">  static getVersion() {
+    return `ES${new Date().getFullYear()}`;
+  }
+</code></p-fragment><p-fragment class="vertical-collapsed"><code
+  class="language-js">  static {
+    this.lang = 'ECMAScript';
+  }
+</code></p-fragment>}</pre>
+  <p-fragment class="the-circle" style="width: 14em; top: 6.5em; left: 2.4em; height: 6em"></p-fragment>
+  <p-notes>Wait a minute, what's this?</p-notes>
+</p-slide>
+<p-slide>
+  <h3 class="center no-margins">Static class initialization blocks</h3>
+  <pre class="big self-center"><code class="language-js">class JavaScript {
+  static {
+    this.version = `ES${new Date().getFullYear()}`;
+  }
+}</code>
+
+<p-fragment><code class="language-js input">JavaScript.version</code></p-fragment>
+<p-fragment><code class="language-js output">'ES2025'</code></p-fragment></pre>
+  <script>
+    document.currentScript.parentElement.querySelector('.output').innerHTML = `'ES${new Date().getFullYear()}'`;
+  </script>
+  <p-notes>Wait, this is pretty much&hellip; not interesting. Because it can be easily rewritten as&hellip;</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">class JavaScript {}
+
+JavaScript.version =
+  `ES${new Date().getFullYear()}`;</code></pre>
+  <p-notes>
+    <p>
+      Actually, most of the examples you'll find online about static initialization blocks are like this. You may say "wow, this is cool!", but actually you'd use an unfamiliar
+      syntax to accomplish something you already know how to do. So what's the point?
+    </p>
+    <p>
+      If we want to really understand why we should use SIBs, we need a case where it takes advantage of the fact that's defined
+      <em>inside a class</em>, and thus has access to a wider scope. Let's see an example.
+    </p>
+  </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-ts">class Safe {</code><p-fragment class="vertical-collapsed"><code class="language-ts">  #secret = Math.random();
+</code></p-fragment><p-fragment class="vertical-collapsed" index="1"><code class="language-ts">  get secret() {
+    return this.#secret;
+  }</code>
+</p-fragment>}
+</pre>
+  <p-fragment class="big-x" index="2" style="inset: 36% 36% auto"></p-fragment>
+  <p-notes>
+    Suppose we want to read the secret from an instance of <code>Safe</code>. We could expose a public method, but that would defy the purpose of private fields. Instead, we don't
+    want consumers to have access to the secrect like we do.
+  </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><p-fragment class="vertical-collapsed" index="1"><code
+    class="language-ts">let readSecret: (safe: Safe) => number;
+</code></p-fragment><code class="language-ts">class Safe {
+  #secret = Math.random();
+</code><p-fragment class="vertical-collapsed" index="1"><code class="language-ts">  static {
+    readSecret = (safe) => safe.#secret;
+  }</code>
+</p-fragment>}
+<p-fragment class="vertical-collapsed" index="1"><code class="language-js input">readSecret(new Safe)</code>
+<code class="language-js output">0.8331317890625574</code></p-fragment></pre>
+  <p-notes>
+    So, we want a function that we're going to read the private secret from a class instance. But we won't expose it to the outside world. And how are we going to do that? By using
+    static initialization blocks, which <em>can</em> access to private fields. Sneaky, sneaky!
+  </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="huge self-center"><code class="language-js input">typeof document.all</code>
+<code class="language-js output">'undefined'</code></pre>
+  <p-notes>You shouldn't use this, anyway. Now you could say, "How am I supposed to get the list of all elements, then?"</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="huge self-center"><code class="language-js">document.querySelectorAll('*')</code></pre>
+</p-slide>
+<p-slide>
+  <ul class="center">
+    <li>Text nodes?</li>
+    <li><p-fragment>Comments?</p-fragment></li>
+    <li>
+      <p-fragment><code>&lt;select></code>s with no value?</p-fragment>
+    </li>
+    <li><p-fragment>Elements wider than 80px?</p-fragment></li>
+  </ul>
+</p-slide>
+<p-slide>
+  <div class="self-center">
+    <span class="browser chrome">1</span>
+    <span class="browser firefox">4</span>
+    <span class="browser safari">3</span>
+    <p-fragment class="collapsed"><span class="browser ie">9</span></p-fragment>
+  </div>
+  <p-fragment class="self-center">
+    <pre class="huge"><code class="language-js"> TreeWalker
+NodeIterator</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="self-center no-clip"><code class="language-html">&lt;section>
+  &lt;h3>
+    Latest news
+  &lt;/h3>
+  &lt;article>
+    &lt;h4>
+      JavaScript considered harmful
+    &lt;/h4>
+    &lt;p>
+      To your sanity, to be precise. &hellip;
+    &lt;/p>
+    &hellip;
+  &lt;/article>
+&lt;/section></code><p-fragment class="the-pointer"></p-fragment><p-fragment></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">const walker = document.createTreeWalker(
+  sectionEl,</code><p-fragment class="vertical-collapsed"><code class="language-js"
+>  NodeFilter.SHOW_TEXT</code><p-fragment class="collapsed"><code class="language-js"> | NodeFilter.SHOW_COMMENT</code></p-fragment>,</p-fragment><p-fragment class="vertical-collapsed"><code class="language-js"
+>  (node) => node.data.includes('JavaScript')</code></p-fragment><p-fragment class="vertical-collapsed"><code class="language-js"
+>    ? NodeFilter.FILTER_ACCEPT
+    : NodeFilter.FILTER_REJECT</code></p-fragment>);</pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center no-clip"><code class="language-js">const walker = document.createTreeWalker(
+  sectionEl,
+  NodeFilter.SHOW_TEXT | NodeFilter.SHOW_COMMENT,
+  {
+    acceptNode(node) {
+      return node.data.includes('JavaScript')
+        ? NodeFilter.FILTER_ACCEPT
+        : NodeFilter.FILTER_REJECT;
+    }
+  }
+);</code></pre>
+  <p-notes>&hellip; or you can wrap it in an object with a <code>acceptNode</code> method, because, at this point, why not, we can go full Java 7 on this</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="huge self-center no-clip"><code class="language-js">walker.nextNode()</code><p-fragment class="vertical-collapsed"><code class="language-js"
+>      .previousNode()</code></p-fragment><p-fragment class="vertical-collapsed"><code class="language-js"
+>      .parentNode()
+      .firstChild()
+      .lastChild()
+      .nextSibling()
+      .previousSibling()</code></p-fragment></pre>
+  <p-fragment class="big-x" style="width: 12em; left: 32%; top: 30%"></p-fragment>
+  <p-notes>In a <code>NodeIterator</code> you only have the first two methods</p-notes>
+</p-slide>
+<p-slide>
+  <h1 class="center"><span>That's all, folks!</span><br />👋</h1>
+</p-slide>
+<p-slide class="gradient-4">
+  <h3 class="center final-link">
+    <a href="https://maxart2501.github.io/javascript-is-an-oddball-talk/bo-js/"> maxart2501.github.io/javascript-is-an-oddball-talk/bo-js/ </a>
+    <img src="img/qr-slides-bojs.svg" alt="QR Code for the presentation's link" />
+  </h3>
+</p-slide>
