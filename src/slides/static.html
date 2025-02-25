@@ -35,8 +35,10 @@
 
 <p-fragment><code class="language-js input">JavaScript.version</code></p-fragment>
 <p-fragment><code class="language-js output">'ES2025'</code></p-fragment></pre>
-<script>document.currentScript.parentElement.querySelector('.output').innerHTML = `'ES${new Date().getFullYear()}'`;</script>
-<p-notes>Wait, this is pretty much&hellip; not interesting. Because it can be easily rewritten as&hellip;</p-notes>
+  <script>
+    document.currentScript.parentElement.querySelector('.output').innerHTML = `'ES${new Date().getFullYear()}'`;
+  </script>
+  <p-notes>Wait, this is pretty much&hellip; not interesting. Because it can be easily rewritten as&hellip;</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">class JavaScript {}
@@ -45,8 +47,8 @@ JavaScript.version =
   `ES${new Date().getFullYear()}`;</code></pre>
   <p-notes>
     <p>
-      Actually, most of the examples you'll find online about static initialization blocks are like this. You may say "wow, this is cool!",
-      but actually you'd use an unfamiliar syntax to accomplish something you already know how to do. So what's the point?
+      Actually, most of the examples you'll find online about static initialization blocks are like this. You may say "wow, this is cool!", but actually you'd use an unfamiliar
+      syntax to accomplish something you already know how to do. So what's the point?
     </p>
     <p>
       If we want to really understand why we should use SIBs, we need a case where it takes advantage of the fact that's defined
@@ -62,8 +64,8 @@ JavaScript.version =
 </p-fragment>}
 </pre>
   <p-notes>
-    Suppose we want to read the secret from an instance of <code>Safe</code>. We could expose a public method, but that would defy the purpose of
-    private fields. Instead, we don't want consumers to have access to the secrect like we do.
+    Suppose we want to read the secret from an instance of <code>Safe</code>. We could expose a public method, but that would defy the purpose of private fields. Instead, we don't
+    want consumers to have access to the secrect like we do.
   </p-notes>
 </p-slide>
 <p-slide>
@@ -71,17 +73,18 @@ JavaScript.version =
     class="language-ts">let readSecret: (safe: Safe) => number;
 </code></p-fragment><code class="language-ts">class Safe {
   #secret = Math.random();
-</code></p-fragment><p-fragment class="vertical-collapsed" index="1"><code class="language-ts">  static {
+</code><p-fragment class="vertical-collapsed" index="1"><code class="language-ts">  static {
     readSecret = (safe) => safe.#secret;
   }</code>
 </p-fragment>}
 <p-fragment class="vertical-collapsed" index="1"><code class="language-js input">readSecret(new Safe)</code>
 <code class="language-js output">0.8331317890625574</code></p-fragment></pre>
   <p-notes>
-    So, we want a function that we're going to read the private secret from a class instance. But we won't expose it to the outside world.
-    And how are we going to do that? By using static initialization blocks, which <em>can</em> access to private fields. Sneaky, sneaky!
+    So, we want a function that we're going to read the private secret from a class instance. But we won't expose it to the outside world. And how are we going to do that? By using
+    static initialization blocks, which <em>can</em> access to private fields. Sneaky, sneaky!
   </p-notes>
-  <p-notes>
-    And speaking of objects&hellip;
-  </p-notes>
+  <p-notes> And speaking of objects&hellip; </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="self-center no-clip" style="font-size: 450%; padding: 0"><code class="language-js">if (true)</code></pre>
 </p-slide>

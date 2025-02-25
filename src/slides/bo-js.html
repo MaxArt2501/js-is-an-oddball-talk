@@ -125,12 +125,18 @@ collator.compare(a, b);</code></pre>
 <p-fragment><code class="language-js output">{ foo: 42 }</code></p-fragment>
 </pre>
   <p-fragment class="self-center">
-    <pre class="big"><code class="language-js">result = { foo: 42, ...void 42 };
-result = { foo: 42, ...42 };
-result = { foo: 42, ...'' };
-result = { foo: 42, ...false };</code>
-<p-fragment class="collapsed"><code class="language-js">result = { foo: 42, ...isSpread && item };</code></p-fragment></pre>
+    <pre class="big"><code class="language-js">const result = { foo: 42, ...void 42 };
+const result = { foo: 42, ...42 };
+const result = { foo: 42, ...'' };
+const result = { foo: 42, ...false };</code></pre>
   </p-fragment>
+  <p-fragment class="the-circle" style="width: 4.7em; height: 2em; left: 58%; top: 73%"></p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="huge self-center"><code class="language-js">const result = {
+  foo: 42,
+  ...isOk ? item : {}</code><p-fragment index="1" class="vertical-collapsed"><code class="language-js">  ...isOk && item</code></p-fragment>}
+<p-fragment class="the-stroke" style="width: 19ch; top: calc(.5em + 2lh); left: calc(.5em + 2ch)"></p-fragment></pre>
 </p-slide>
 <p-slide>
   <pre
@@ -218,6 +224,9 @@ JavaScript.version =
     So, we want a function that we're going to read the private secret from a class instance. But we won't expose it to the outside world. And how are we going to do that? By using
     static initialization blocks, which <em>can</em> access to private fields. Sneaky, sneaky!
   </p-notes>
+</p-slide>
+<p-slide>
+  <pre class="self-center no-clip" style="font-size: 450%; padding: 0"><code class="language-js">if (true)</code></pre>
 </p-slide>
 <p-slide>
   <pre class="huge self-center"><code class="language-js input">typeof document.all</code>
