@@ -24,10 +24,7 @@ pre p-fragment {
 }
 
 :not(pre) > code {
-  background-color: rgba(255, 102, 0, 0.1);
-  border-radius: 0.25em;
   padding: 0 0.25em;
-  box-shadow: inset 0 0 0.05em rgba(black, 0.25);
 
   pre & {
     box-shadow: none;
@@ -67,5 +64,31 @@ h6 {
   }
   &:last-child {
     margin-bottom: 0;
+  }
+}
+
+blockquote {
+  text-align: center;
+  font-size: 125%;
+  font-weight: bold;
+
+  &::before {
+    content: '“';
+  }
+  &::after {
+    content: '”';
+  }
+  &:has(+ cite) {
+    margin-bottom: 0;
+  }
+}
+cite {
+  blockquote + & {
+    display: block;
+    text-align: center;
+    margin-bottom: 1.25em;
+  }
+  &::before {
+    content: '—\a0';
   }
 }

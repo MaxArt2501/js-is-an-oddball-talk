@@ -4,7 +4,7 @@
     <h1>❤️</h1>
     <h3 class="JavaScript"></h3>
   </p-fragment>
-  <p-fragment class="big-x" style="width: 8em; top: 30%; left: calc(50% - 4em)"></p-fragment>
+  <p-fragment class="big-x" style="width: 8em; top: 28%; left: calc(50% - 4em)"></p-fragment>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js input">JSON.stringify({
@@ -28,6 +28,12 @@
     <span class="browser firefox">94</span>
     <span class="browser safari">15.4</span>
   </p-fragment>
+  <p-notes>It is better, as it preserves undefined, although it doesn't copy symbol properties, and throws if it meets function or symbol values</p-notes>
+</p-slide>
+<p-slide class="row justify-evenly align-center">
+  <pre class="big"><code class="language-js">structuredClone(item);</code></pre>
+  <p-fragment wtf-level="8"></p-fragment>
+  <p-notes>I'd say 9, but <code>structuredClone</code> is actually <em>slower!</em></p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">{ "bigMcHuge": 12345678901234567890 }</code></pre>
@@ -57,16 +63,19 @@
 
   <p-fragment><code class="language-js">array.contains(x)</code></p-fragment><p-fragment class="big-x" style="width: 4em; left: 18%; top: 38%"></p-fragment><p-fragment>  &#x27f6;  <code class="language-js">array.includes(x)</code></p-fragment>
 
-  <p-fragment><code class="language-js">array.groupBy(fn)</code></p-fragment><p-fragment class="big-x" style="width: 4em; left: 18%; top: 65%"></p-fragment><p-fragment>  &#x27f6;  <code class="language-js">Object.groupBy(array, fn)</code></p-fragment>
+  <p-fragment><code class="language-js">array.groupBy(fn)</code></p-fragment><p-fragment class="big-x" style="width: 4em; left: 18%; top: 63%"></p-fragment><p-fragment>  &#x27f6;  <code class="language-js">Object.groupBy(array, fn)</code></p-fragment>
 
 </pre>
 </p-slide>
 <p-slide>
-  <h3 class="center">
-    &ldquo;&hellip; one of the few cases where patching built-in objects is not explicitly discouraged&rdquo;
-    <br />
-    &mdash; <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt#use_within_json">MDN</a>
-  </h3>
+  <blockquote>&hellip; one of the few cases where patching built-in objects is not explicitly discouraged</blockquote>
+  <cite>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt#use_within_json">MDN</a>
+  </cite>
+</p-slide>
+<p-slide class="row justify-evenly align-center">
+  <pre class="big"><code class="language-js">BigInt.prototype.toJSON = ...</code></pre>
+  <p-fragment wtf-level="8"></p-fragment>
 </p-slide>
 <p-slide>
   <p-fragment index="1" style="position: absolute; top: 10%; left: 40%">
@@ -92,7 +101,8 @@
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">BigInt.prototype.toJSON ??= function() {</code>
-  <p-fragment><code class="language-js">return JSON.rawJSON(this.toString());</code></p-fragment><p-fragment class="the-circle" aria-label="A marker circle around the JSON.rawJSON function name" style="top: 17%;width: 9em;left: 19%;height: 2em;"></p-fragment>
+  <p-fragment><code class="language-js">return JSON.rawJSON(this.toString());</code></p-fragment><p-fragment
+  class="highlight" aria-label="A highlighting around the JSON.rawJSON function name" style="top: 1lh; left: 9ch; width: 12ch"></p-fragment>
 <code class="language-js">};</code>
 
 <p-fragment><code class="language-js input">JSON.stringify({ bigMcHuge })</code></p-fragment>
@@ -113,11 +123,9 @@
   <pre class="big self-center"><code class="language-js">const raw = '{ "bigMcHuge": 12345678901234567890 }';</code>
 
 <p-fragment><code class="language-js input">JSON.parse(raw)</code></p-fragment>
-<p-fragment><code class="language-js output">{ bigMcHuge: 12345678901234567000 }</code></p-fragment></pre>
-  <p-fragment
-    ><div class="the-circle" aria-label="A marker circle around the last digits of the source" style="top: 34.6%; width: 2em; left: 79.7%; height: 1em"></div>
-    <div class="the-circle" aria-label="A marker circle around the last digits of the output" style="top: 58.7%; width: 2em; left: 58.2%; height: 1em"></div
-  ></p-fragment>
+<p-fragment><code class="language-js output">{ bigMcHuge: 12345678901234567000 }</code></p-fragment><p-fragment
+class="highlight" style="top: 3lh; left: 32ch; width: 3ch; color: red"></p-fragment><p-fragment
+class="highlight" style="top: 0; left: 45ch; width: 3ch; color: red"></p-fragment></pre>
   <p-notes>Some may say: "I know! I'll use a reviver!" - Except, no you don't.</p-notes>
 </p-slide>
 <p-slide>
@@ -151,8 +159,8 @@
 <p-slide>
   <pre class="big self-center"><code class="language-js">JSON.parse(raw, (key, value, { source }) => {
   return isBigInt(source) ? BigInt(source) : value;
-});</code><p-fragment class="the-circle" aria-label="A marker circle around 'isBigInt' function name"
-  style="top: 14.7%;width: 6em;left: 15.6%;height: 1.9em;"></p-fragment>
+});</code><p-fragment class="highlight" aria-label="A marker circle around 'isBigInt' function name"
+  style="top: 1lh;width: 8ch;left: 9ch"></p-fragment>
 
 <p-fragment><code class="language-js">const isBigInt = numstr => !/\D/.test(numstr) &&</code></p-fragment>
   <p-fragment><code class="language-js">numstr.localeCompare(
@@ -160,10 +168,10 @@
   ) > 0;</code></p-fragment></pre>
   <p-notes> There must be something that tells us when a numeric string is greater than anothe&hellip; Golly, it's our good friend <code>localeCompare</code>! </p-notes>
 </p-slide>
-<p-slide>
+<!-- <p-slide>
   <pre class="big self-center"><code class="language-js">const numCompare = new Intl.Collator(
     undefined, { numeric: true }).compare;
 
 const isBigInt = numstr => !/\D/.test(numstr) &&
   numCompare(numstr, '9007199254740991') > 0;</code></pre>
-</p-slide>
+</p-slide> -->

@@ -15,20 +15,21 @@
   <p-notes>How happy would I be if I could replace it with something more useful, like&hellip;</p-notes>
 </p-slide>
 <p-slide>
-  <pre class="big self-center"><code class="language-js">if (typeof item === 'object!') {</code>
-  <p-fragment>🤩</p-fragment><p-fragment class="the-stroke" style="width: 25ch; top: .5em; left: calc(.667em + 4ch)"></p-fragment>
+  <pre class="big self-center"><code class="language-js">if (typeof item === 'REALobject') {</code>
+  <p-fragment>🤩</p-fragment><p-fragment class="the-stroke" style="width: 28ch; top: .5em; left: calc(.667em + 4ch)"></p-fragment>
 <code class="language-js">}</code></pre>
 </p-slide>
-<p-slide>
+<!-- <p-slide>
   <pre class="big self-center"><code class="language-js">Array.isArray(value)</code></pre>
   <p-fragment class="self-center">
     <pre class="big"><code class="language-js">Object.isObject(value)</code></pre>
   </p-fragment>
   <p-fragment class="center">🙏</p-fragment>
-</p-slide>
+</p-slide> -->
 <p-slide>
   <pre class="big self-center"><code class="language-js">const obj = null;</code>
-<p-fragment><code class="language-js input">const result = { foo: 42, ...obj };</code></p-fragment>
+<p-fragment><code class="language-js input">const result = { foo: 42, ...obj };</code></p-fragment><p-fragment class="highlight"
+style="top: 1lh; left: 28ch; width: 6ch"></p-fragment>
 <p-fragment><code class="language-js output">{ foo: 42 }</code></p-fragment>
 </pre>
 </p-slide>
@@ -41,7 +42,8 @@
 
 <p-fragment><code class="language-js">result = { foo: 42, ...42 };</code></p-fragment>
 
-<p-fragment><code class="language-js">result = { foo: 42, ...'' };</code></p-fragment></pre>
+<p-fragment><code class="language-js">result = { foo: 42, ...'' };</code></p-fragment><p-fragment class="highlight"
+style="top: 0; left: 20ch; width: 10ch; height: 9lh"></p-fragment></pre>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-ts">let item: Item | null</code><p-fragment index="1" class="collapsed"><code class="language-js"> = null</code></p-fragment>;
@@ -62,6 +64,13 @@ const hasItem: boolean = shouldHaveItem(item);</code>
     style="top: calc(.5em + 5lh);left: calc(.667em + 2ch);width: 24ch;"
 ></p-fragment>
   <p-fragment><code class="language-js">...hasItem && item</code></p-fragment>
-};</p-fragment></pre>
-  <p-fragment class="the-circle" aria-label="A marker circle around '...hasItem && item' in the code" style="top: 64%; width: 9.7em; left: 11%; height: 1.8em"></p-fragment>
+};</p-fragment><p-fragment
+  class="highlight" aria-label="A highlighting around '...hasItem && item' in the code" style="top: 6lh; left: 2ch; width: 18ch"></p-fragment></pre>
+</p-slide>
+<p-slide class="row justify-evenly align-center">
+  <pre class="big"><code class="language-js">const payload = {
+  action: 'add',
+  ...hasItem && item
+};</code></pre>
+  <p-fragment wtf-level="6"></p-fragment>
 </p-slide>

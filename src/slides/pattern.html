@@ -1,4 +1,4 @@
-<p-slide>
+<!-- <p-slide>
   <h1 class="center"><code>'use strict';</code></h1>
 </p-slide>
 <p-slide>
@@ -31,20 +31,16 @@
     <code>protected</code>
     <p-fragment class="big-x" style="width: 5em; left: 50%; top: 50%; translate: -50% -50%"></p-fragment>
   </h1>
-</p-slide>
+</p-slide> -->
 <p-slide>
   <h1 class="center"><code>switch</code></h1>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">switch (count) {
   case 0:
-    text = 'no result';</code>
-    <p-fragment><code class="language-js">break;</code></p-fragment>
-  <code class="language-js">case 1:</code>
-    ...
-  <p-fragment><code class="language-js">default:
-    text = '';</code></p-fragment>
-}</pre>
+    text = 'no result';</code><p-fragment class="vertical-collapsed"><code class="language-js">    break;</code></p-fragment>  <code class="language-js">case 1:</code>
+    ...<p-fragment class="vertical-collapsed"><code class="language-js">  default:
+    text = '';</code></p-fragment><code class="language-js">}</code></pre>
 </p-slide>
 <p-slide>
   <pre
@@ -65,7 +61,9 @@
     text = 'no result';
     break;
   ...
-</code></p-fragment>}</pre>
+</code></p-fragment>}<p-fragment class="highlight" aria-label="A marker circle around 'true'"
+style="top: 0;width: 4ch;left: 8ch"></p-fragment><p-fragment class="highlight" aria-label="A marker circle around the first condition"
+style="top: 1lh;width: 20ch;left: 7ch"></p-fragment></pre>
 </p-slide>
 <p-slide>
   <pre class="self-center"><code class="language-ts">const getContent = async (children: ReactNode) => {
@@ -81,9 +79,16 @@
     default:
       return '';
   }
-};</code></pre>
-  <p-fragment class="the-circle" style="width: 6em; left: 26.5%; top: 22.5%; height: 1em"></p-fragment>
-  <p-fragment class="the-circle" style="width: 10em; left: 25%; top: 33%; height: 1em"></p-fragment>
-  <p-fragment class="the-circle" style="width: 13em; left: 23.5%; top: 44%; height: 1em"></p-fragment>
-  <p-fragment class="the-circle" style="width: 10em; left: 24.5%; top: 54.5%; height: 1em"></p-fragment>
+};</code><p-fragment
+  class="highlight" style="width: 16ch; left: 9ch; top: 2lh; color: red"></p-fragment><p-fragment
+  class="highlight" style="width: 28ch; left: 9ch; top: 4lh; color: red"></p-fragment><p-fragment
+  class="highlight" style="width: 35ch; left: 9ch; top: 6lh"></p-fragment><p-fragment
+  class="highlight" style="width: 27ch; left: 9ch; top: 8lh; color: gray"></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="self-center no-clip" style="font-size: 330%; padding: 0"><code class="language-js">switch (true)</code></pre>
+</p-slide>
+<p-slide class="row justify-evenly align-center">
+  <pre class="big"><code class="language-js">switch (true) {...}</code></pre>
+  <p-fragment wtf-level="4"></p-fragment>
 </p-slide>

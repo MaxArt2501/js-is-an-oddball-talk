@@ -105,6 +105,10 @@
     flex-wrap: wrap;
   }
 }
+.flex.row,
+p-slide.row {
+  flex-direction: row;
+}
 
 [grid] {
   display: grid;
@@ -124,6 +128,9 @@
   }
   .rowspan-#{$i} {
     grid-row-end: span #{$i};
+  }
+  .gap-#{$i} {
+    gap: #{$i * 1em};
   }
 }
 

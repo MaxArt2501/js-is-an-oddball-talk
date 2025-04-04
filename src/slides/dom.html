@@ -1,4 +1,4 @@
-<p-slide>
+<!-- <p-slide>
   <pre class="big self-center"><code class="language-js">out: {
   while (someCondition()) {
     while (someOtherCondition()) {
@@ -12,16 +12,14 @@
   <pre class="big self-center"><p-fragment class="vertical-collapsed"><code class="language-ts">const list: (Item | null)[] = ...;
 
 </code></p-fragment><code class="language-ts">const filtered = list.filter(Boolean);</code><p-fragment class="code-popover" style="top: 2lh;left: 10ch"><code class="language-ts">const filtered: (Item | null)[]</code></p-fragment></pre>
+</p-slide> -->
+<p-slide>
+  <h1 class="center">DOM<p-fragment class="vertical-collapsed uppercase">Pérignon<br>🍾</p-fragment></h1>
+  <p-notes>So full of weird stuff that you might argue that the name comes from their favorite drink, but it's sadly mostly historic</p-notes>
 </p-slide>
 <p-slide>
-  <h1 class="center">DO<p-fragment class="collapsed">O</p-fragment>M</h1>
-</p-slide>
-<p-slide>
-  <pre class="huge self-center"><code class="language-js">document.all</code></pre>
-</p-slide>
-<p-slide>
-  <pre class="huge self-center"><code class="language-js input">typeof document.all</code>
-<code class="language-js output">'undefined'</code></pre>
+  <pre class="huge self-center"><p-fragment class="collapsed"><code class="language-js input">typeof </code></p-fragment><code class="language-js">document.all</code><p-fragment
+    class="vertical-collapsed"><code class="language-js output">'undefined'</code></p-fragment></pre>
   <p-notes>You shouldn't use this, anyway. Now you could say, "How am I supposed to get the list of all elements, then?"</p-notes>
 </p-slide>
 <p-slide>
@@ -32,7 +30,7 @@
     <li>Text nodes?</li>
     <li><p-fragment>Comments?</p-fragment></li>
     <li>
-      <p-fragment><code>&lt;select></code>s with no value?</p-fragment>
+      <p-fragment><code class="language-html">&lt;select></code>s with no value?</p-fragment>
     </li>
     <li><p-fragment>Elements wider than 80px?</p-fragment></li>
   </ul>
@@ -88,7 +86,8 @@
         : NodeFilter.FILTER_REJECT;
     }
   }
-);</code></pre>
+);</code><p-fragment class="highlight"
+style="top: 3lh; left: 2ch; width: 43ch; height: 7lh"></p-fragment></pre>
   <p-notes>&hellip; or you can wrap it in an object with a <code>acceptNode</code> method, because, at this point, why not, we can go full Java 7 on this</p-notes>
 </p-slide>
 <p-slide>
@@ -98,8 +97,99 @@
       .firstChild()
       .lastChild()
       .nextSibling()
-      .previousSibling()</code></p-fragment></pre>
-  <p-fragment class="big-x" style="width: 12em; left: 32%; top: 30%"></p-fragment>
+      .previousSibling()</code></p-fragment><p-fragment class="highlight" style="width: 18ch; left: 6ch; top: 2lh; height: 5lh; color: red"></p-fragment></pre>
   <p-notes>In a <code>NodeIterator</code> you only have the first two methods</p-notes>
 </p-slide>
-<p-slide> </p-slide>
+<p-slide class="row justify-evenly align-center">
+  <pre class="big"><code class="language-js">TreeWalker
+NodeIterator</code></pre>
+  <p-fragment wtf-level="7"></p-fragment>
+  <p-notes>That's for <em>getting</em> the nodes. What about <em>creating</em> them?</p-notes>
+</p-slide>
+<p-slide>
+  <pre class="self-center big"><code class="language-js">element.insertAdjacentElement(position, element);
+
+element.insertAdjacentText(position, text);
+
+element.insertAdjacentHTML(position, html);</code></pre>
+  <p-notes>That's kind of embarassing, TBH. But maybe just for testing on the console?</p-notes>
+  <p-fragment class="self-center">
+    <span class="browser chrome">1</span>
+    <span class="browser firefox">8</span>
+    <span class="browser safari">4</span>
+    <p-fragment class="collapsed"><span class="browser ie">6</span></p-fragment>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="self-center big"><code class="language-js clip" style="width: 22ch">element.insertAdjacent()</code><code class="language-js">*(position, stuff)</code></pre>
+  <p-fragment class="self-center">
+    <pre class="flex align-center big">
+      <code class="language-js">position = </code>
+      <code class="language-js">'beforebegin'
+'afterbegin'
+'beforeend'
+'afterend'</code>
+    </pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="self-center big no-clip"><code class="language-html">&lt;main>
+  &lt;article>
+    &lt;header>...&lt;/header>
+    ...
+    &lt;footer>...&lt;/footer>
+  &lt;/article>
+  ...
+&lt;/main></code><p-fragment class="highlight"
+style="top: 1lh; left: 2ch; width: 9ch"></p-fragment><p-fragment
+class="line-pointer" style="top: .4em; left: calc(.667em + 2ch); text-indent: 12ch"><code class="language-js">'beforebegin'</code></p-fragment><p-fragment
+class="line-pointer left" style="top: calc(.5em + 1lh); left: calc(.667em - 12ch); width: 17ch"><code class="language-js">'afterbegin'</code></p-fragment><p-fragment
+class="line-pointer top left" style="top: calc(.5em + 5lh); left: calc(.667em - 12ch); width: 17ch"><code class="language-js">'beforeend'</code></p-fragment><p-fragment
+class="line-pointer top" style="top: calc(.6em + 6lh); left: calc(.667em + 2ch); text-indent: 15ch"><code class="language-js">'afterend'</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="self-center big"><code class="language-js">element.append(nodeOrString</code><p-fragment class="collapsed"><code class="language-js">, ...</code></p-fragment><code class="language-js">)</code><p-fragment class="vertical-collapsed"><code class="language-js">element.prepend(nodeOrString, ...)
+element.before(nodeOrString, ...)
+element.after(nodeOrString, ...)</code></p-fragment></pre>
+  <p-fragment class="self-center">
+    <span class="browser chrome">54</span>
+    <span class="browser firefox">49</span>
+    <span class="browser safari">10</span>
+  </p-fragment>
+</p-slide>
+<p-slide class="row justify-evenly align-center">
+  <pre class="big"><code class="language-js">el.append()
+el.prepend()
+el.before()
+el.after()</code></pre>
+  <p-fragment wtf-level="9"></p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="self-center big"><p-fragment class="the-stroke" aria-label="A strike through the first line" style="width: 49ch"></p-fragment><code class="language-js">element.insertAdjacentElement(position, element);</code>
+
+   <p-fragment class="the-stroke" aria-label="A strike through the second line" style="width: 43ch"></p-fragment><code class="language-js">element.insertAdjacentText(position, text);
+
+   element.insertAdjacentHTML(position, html);</code><p-fragment class="highlight"
+style="top: 4lh; left: 3ch; width: 43ch"></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="self-center big"><p-fragment class="the-stroke" index="1" aria-label="A strike through the line" style="width: 46ch"></p-fragment><code class="language-js">element.innerHTML += '&lt;div>Some HTML...&lt;/div>';</code></pre>
+  <p-fragment class="self-center">Everything not in the markup is <em>lost</em>:</p-fragment>
+  <p-fragment class="self-center"><ul>
+    <li>👉 event listeners;</li>
+    <li>👉 internal states;</li>
+    <li>👉 all references.</li>
+  </ul></p-fragment>
+</p-slide>
+<p-slide class="row justify-evenly align-center">
+  <pre class="big"><code class="language-js">el.insertAdjacentHTML()</code></pre>
+  <p-fragment wtf-level="2"></p-fragment>
+</p-slide>
+<p-slide class="row justify-evenly align-center">
+  <div class="center">
+    <pre class="big"><code class="language-js">el.insertAdjacentHTML()</code></pre>
+    for debugging
+  </div>
+  <p-fragment wtf-level="7"></p-fragment>
+</p-slide>
+
