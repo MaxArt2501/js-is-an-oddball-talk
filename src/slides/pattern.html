@@ -1,39 +1,6 @@
-<!-- <p-slide>
-  <h1 class="center"><code>'use strict';</code></h1>
-</p-slide>
-<p-slide>
-  <h1 class="center">
-    <code>with</code>
-    <p-fragment class="big-x" style="width: 3em; left: 50%; top: 50%; translate: -50% -50%"></p-fragment>
-  </h1>
-</p-slide>
-<p-slide>
-  <h1 class="center">
-    <code>arguments</code>
-    <p-fragment class="big-x" style="width: 3em; left: 50%; top: 50%; translate: -50% -50%"></p-fragment>
-  </h1>
-</p-slide>
-<p-slide>
-  <h1 class="center">
-    <code>arguments.callee</code>
-    <p-fragment class="the-stroke" style="width: 9em; left: 50%; top: 50%; translate: -50% -50%"></p-fragment>
-  </h1>
-</p-slide>
-<p-slide>
-  <h1 class="center">
-    <code>fn.caller</code>
-    <p-fragment class="the-stroke" style="width: 5em; left: 50%; top: 50%; translate: -50% -50%"></p-fragment>
-  </h1>
-</p-slide>
-<p-slide>
-  <h1 class="center">
-    <code>private</code><br />
-    <code>protected</code>
-    <p-fragment class="big-x" style="width: 5em; left: 50%; top: 50%; translate: -50% -50%"></p-fragment>
-  </h1>
-</p-slide> -->
 <p-slide>
   <h1 class="center"><code>switch</code></h1>
+  <p-notes>switch is kinda awkward</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">switch (count) {
@@ -41,6 +8,10 @@
     text = 'no result';</code><p-fragment class="vertical-collapsed"><code class="language-js">    break;</code></p-fragment>  <code class="language-js">case 1:</code>
     ...<p-fragment class="vertical-collapsed"><code class="language-js">  default:
     text = '';</code></p-fragment><code class="language-js">}</code></pre>
+  <p-notes>
+    At the first glance this looks fine, but then you notice you must give it a <code>break</code>, and then a <code>default</code> case.
+    It's verbose, it's boring. That's why so many use&hellip;
+  </p-notes>
 </p-slide>
 <p-slide>
   <pre
@@ -52,6 +23,8 @@
 } else {
   text = '';
 }</code></pre>
+  <p-notes>A bunch of ifs instead. Which are even more versatile when specificying the conditions.</p-notes>
+  <p-notes>But what if I told you we can do <em>way</em> better with <code>switch</code> too?</p-notes>
 </p-slide>
 <p-slide>
   <pre
@@ -64,6 +37,14 @@
 </code></p-fragment>}<p-fragment class="highlight" aria-label="A marker circle around 'true'"
 style="top: 0;width: 4ch;left: 8ch"></p-fragment><p-fragment class="highlight" aria-label="A marker circle around the first condition"
 style="top: 1lh;width: 20ch;left: 7ch"></p-fragment></pre>
+  <p-notes>So we take a <code>switch</code>&hellip; we put <code>true</code> as the comparison value! Not a variable, but a value.</p-notes>
+  <p-notes>
+    <p>What happens then? It executes the first case whose condition is strictly <code>true</code>.</p>
+    <p>
+      We still have to use <code>break</code> but now can express whatever we want, like an <code>if</code>, and even better if you're
+      a strict-typing aficionado because, again, the comparison is strict, not loose. It's like pattern matching for JS!
+    </p>
+  </p-notes>
 </p-slide>
 <p-slide>
   <pre class="self-center"><code class="language-ts">const getContent = async (children: ReactNode) => {
@@ -91,4 +72,7 @@ style="top: 1lh;width: 20ch;left: 7ch"></p-fragment></pre>
 <p-slide class="row justify-evenly align-center">
   <pre class="big"><code class="language-js">switch (true) {...}</code></pre>
   <p-fragment wtf-level="4"></p-fragment>
+  <p-notes>Ok, jokes aside, let's give it a wtf value. It's 4. Because, to be honest, it's so unexpected that you feel mentally violated by this!</p-notes>
+  <p-notes>So my suggestion is: don't use it in production. Maybe in your personal projects.</p-notes>
+  <p-notes>But we cannot talk about odd stuff in JS without considering the first, examplary environment where JS was born and has grown.</p-notes>
 </p-slide>

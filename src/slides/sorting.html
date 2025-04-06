@@ -3,20 +3,26 @@
   <p-fragment class="self-center">
     <pre class="big"><code class="language-js">[] == ![]</code></pre>
   </p-fragment>
+  <p-notes>
+    So, I want to talk about weird things in JS. But not <em>this</em> kind of weird things... Or <em>this</em> language oddity, no.
+    I want to talk about unusual syntax, forgotten APIs, unexpected behaviors that could have an impact in our everyday job as JS developers.
+  </p-notes>
 </p-slide>
 <p-slide class="stack">
   <pre style="font-size: 24.4%; white-space: normal; word-break: break-all; margin: 0">
 [][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+([]+[])[(![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]()[+!+[]+[!+[]+!+[]]]+((!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[+!+[]]+[!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]]+[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[+!+[]]+[+[]]+[!+[]+!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[+!+[]])[(![]+[])[!+[]+!+[]+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([]+[])[([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]][([][[]]+[])[+!+[]]+(![]+[])[+!+[]]+((+[])[([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]+[])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]]((!![]+[])[+[]])[([][(!![]+[])[!+[]+!+[]+!+[]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]](([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]][([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(![]+[+[]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]]+![]+(![]+[+[]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]])()[([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((![]+[+[]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]])+[])[+!+[]])+([]+[])[(![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+([][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+(![]+[])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]()[+!+[]+[!+[]+!+[]]])())()</pre
   >
   <p-fragment style="place-self: center">
-    <code class="language-js" style="background: var(--slide-bg);">console.log('JSDay')</code>
+    <code class="language-js" style="background: var(--slide-bg); padding: .5em">console.log('JSDay')</code>
   </p-fragment>
+  <p-notes>And then again, it doesn't even mean a way to write code like <em>this</em> (which, by the way, is a very verbose way of writing)</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">[2, 13, 1].sort() // [1, 13, 2] 🙄</code></pre>
   <p-fragment class="self-center">
     <pre class="big"><code class="language-js">[2, 13, 1].sort((a, b) => a - b) // [1, 2, 13] 🎉</code></pre>
   </p-fragment>
+  <p-notes>And also forget about annoyances like sorting a list of number, because we have a well known solution, don't we?</p-notes>
 </p-slide>
 <p-slide>
   <pre
@@ -24,11 +30,13 @@
   ><code class="language-js">['File 2', 'File 13', 'File 1'].sort(</code><p-fragment class="collapsed"><code class="language-js">...?...</code></p-fragment>)&nbsp;&nbsp;&nbsp;
 
   </pre>
+  <p-notes>But hear me out, what if we want to sort an array of strings that <em>contain</em> numbers? So that, of course, 'File 13' comes <em>after</em> 'File 2'?</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">['File 2', 'File 13', 'File 1'].sort((a, b) => {
   return a.slice(5) - b.slice(5);
 });</code></pre>
+  <p-notes>This could also be easily done with a specific solution. But what if things get more complicated?</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">[
@@ -40,24 +48,27 @@
   'Die Hard 2: Die Harder',
   'Die Hard'
 ]</code><p-fragment><code class="language-js">.sort((a, b) => 😭);</code></p-fragment></pre>
+  <p-notes>Take <em>this</em> list, for example. There's no unique pattern. How can we deal with that?</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js input">['File 2', ...].sort((a, b) =></code><p-fragment><code class="language-js">
   a.localeCompare(b, undefined, { numeric: true })
 </code></p-fragment><code class="language-js">);</code>
-<p-fragment class="self-center"><code class="language-js output">['Die Hard', 'Die Hard 2: Die Harder',
-  'File 2', 'fiLE 15', 'SS1 Aurelia',
-  'SS4 Salaria', 'SS16 Adriatica']</code></p-fragment></pre>
+<p-notes>Believe it or not, this could be done with a <em>single line of JS</em>: this one!</p-notes>
+<p-fragment class="self-center"><code class="language-js output">['Die Hard',   'Die Hard 2: Die Harder',
+  'File 2',      'fiLE 15',
+  'SS1 Aurelia', 'SS4 Salaria', 'SS16 Adriatica']</code></p-fragment></pre>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js input">[{ name: 'Venus', population: 0 },
-  { name: 'Earth', population: 8e9 },
-  { name: 'Mars', population: 0 }].sort(</code><p-fragment><code class="language-js">
+   { name: 'Earth', population: 8e9 },
+   { name: 'Mars',  population: 0 }].sort(</code><p-fragment><code class="language-js">
   (a, b) => a.name.localeCompare(b.name)
 </code></p-fragment><code class="language-js">);</code>
 <p-fragment class="self-center"><code class="language-js output">[{ name: 'Earth', population: 8e9 },
-  { name: 'Mars', population: 0 },
-  { name: 'Venus', population: 0 }]</code></p-fragment></pre>
+   { name: 'Mars',  population: 0 },
+   { name: 'Venus', population: 0 }]</code></p-fragment></pre>
+   <p-notes>You may have used <code>localeCompare</code> for this purpose: sorting an array of objects using one of their string properties.</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">a.localeCompare(b, locale, options)</code></pre>
@@ -73,6 +84,15 @@ collator.compare(a, b);</code></pre>
     <span class="browser firefox">29</span>
     <span class="browser safari">10</span>
   </p-fragment>
+  <p-notes>
+    <p>
+      But not everyone knows that <code>localeCompare</code> can take up to 3 arguments. The second is the locale string identifier, and the third is
+      a set of options, which are the same of another less known API: <code>Collator</code>. And actually, <code>localeCompare</code> has been
+      specified as equivalent to do this: so internally, it creates a <code>Collator</code> instance and use its <code>compare</code> method.
+    </p>
+    <p>It's been like that for a while now, as you can see.</p>
+    <p>But is this code good for our job? Can we welcome these techniques in our codebases?</p>
+  </p-notes>
 </p-slide>
 <p-slide>
   <h3 class="center">Introducing</h3>
@@ -82,6 +102,7 @@ collator.compare(a, b);</code></pre>
     <p-fragment grid style="grid-template-columns: subgrid" class="colspan-2"><span class="center">F</span><span>actor</span></p-fragment>
   </div>
   <p-fragment class="the-circle" aria-label="Marker circle around the initials W T F" style="top: 25%; width: 3em; left: 23.5%; height: 9em"></p-fragment>
+  <p-notes>So I'm going to introduce a estimate factor that you can use to know if you should use something or not. It is the...</p-notes>
 </p-slide>
 <p-slide>
   <h3 class="center">Should I use <em>that</em>?</h3>
@@ -91,16 +112,32 @@ collator.compare(a, b);</code></pre>
       <p-fragment>* wtf</p-fragment>
     </code>
   </p-fragment>
+  <p-notes>So, for the question "should I use that?", you take your personal evaluation and multiply it by the wtf value. It's simple as that</p-notes>
 </p-slide>
 <p-slide class="row justify-evenly align-center">
   <code class="language-js">let sum = a + b;</code>
   <p-fragment class="self-center" wtf-level="10"></p-fragment>
+  <p-notes>For example, what about the plus operator? Yes, of course, you should absolutely use it! It's well known, it behaves as expected, so let's give it a wtf level of 10</p-notes>
 </p-slide>
 <p-slide class="row justify-evenly align-center">
   <code class="language-js">[][(![]+[])...</code>
   <p-fragment class="self-center" wtf-level="1"></p-fragment>
+  <p-notes>
+    But writing code in pluses, parentheses and brackets? It's a big no-no, so it's a 1. Never zero, because there always is a reason for that.
+    After all, we <em>know</em> about writing code like that, don't we?
+  </p-notes>
+</p-slide>
+<p-slide class="row justify-evenly align-center">
+  <pre class="big"><code class="language-js">a.localeCompare(b, locale, opts)</code></pre>
+  <p-fragment class="self-center" wtf-level="8"></p-fragment>
+  <p-notes>So, <code>localeCompare</code> huh? I'd give it a 8, just because your team has probably to learn about it. But otherwise, go for it!</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big"><code class="language-js">const collator = new Intl.Collator(locale, options);
 hugeList.sort(collator.compare)</code><p-fragment><code class="language-js">.reverse(); // 🔽</code></p-fragment></pre>
+  <p-notes>
+    By the way, a <code>Collator</code> instance is better if you have to sort large lists. The only problem is that it sorts only in the ascending
+    order, so if we want the other direction we need to - you guessed it - use <code>reverse</code>. And if in all of this, you're triggered by the
+    use of array-mutating methods like <code>sort</code> and <code>reverse</code>, I have good news for you.
+  </p-notes>
 </p-slide>

@@ -1,25 +1,12 @@
-<!-- <p-slide>
-  <pre class="big self-center"><code class="language-js">out: {
-  while (someCondition()) {
-    while (someOtherCondition()) {
-      // ...
-      break out;
-    }
-  }
-}</code></pre>
-</p-slide>
-<p-slide>
-  <pre class="big self-center"><p-fragment class="vertical-collapsed"><code class="language-ts">const list: (Item | null)[] = ...;
-
-</code></p-fragment><code class="language-ts">const filtered = list.filter(Boolean);</code><p-fragment class="code-popover" style="top: 2lh;left: 10ch"><code class="language-ts">const filtered: (Item | null)[]</code></p-fragment></pre>
-</p-slide> -->
 <p-slide>
   <h1 class="center">DOM<p-fragment class="vertical-collapsed uppercase">Pérignon<br>🍾</p-fragment></h1>
   <p-notes>So full of weird stuff that you might argue that the name comes from their favorite drink, but it's sadly mostly historic</p-notes>
+  <p-notes>Technically they're not JS API, but Web API, but they show how JS has been used for them</p-notes>
 </p-slide>
 <p-slide>
   <pre class="huge self-center"><p-fragment class="collapsed"><code class="language-js input">typeof </code></p-fragment><code class="language-js">document.all</code><p-fragment
     class="vertical-collapsed"><code class="language-js output">'undefined'</code></p-fragment></pre>
+  <p-notes>No, we won't talk about this. Which apparently doesn't even exist.</p-notes>
   <p-notes>You shouldn't use this, anyway. Now you could say, "How am I supposed to get the list of all elements, then?"</p-notes>
 </p-slide>
 <p-slide>
@@ -44,12 +31,15 @@
 <p-slide>
   <pre class="huge self-center"><code class="language-js">TreeWalker</code></pre>
   <pre class="huge self-center" style="margin-top: -0.5em"><code class="language-js">NodeIterator</code></pre>
+  <p-notes>They've been available for a while. A <em>long</em> while actually, as they're supported by IE 9!</p-notes>
   <p-fragment class="self-center">
     <span class="browser chrome">1</span>
     <span class="browser firefox">4</span>
     <span class="browser safari">3</span>
     <p-fragment class="collapsed"><span class="browser ie">9</span></p-fragment>
   </p-fragment>
+  <p-notes>I must tell you, they're one of the <em>most adorably</em> Java-fashioned APIs that you could ever meet!</p-notes>
+  <p-notes>How do they work? Basically the same, with <code>TreeWalker</code> that could do some more stuff, but it matters little.</p-notes>
 </p-slide>
 <p-slide>
   <pre class="self-center no-clip"><code class="language-html">&lt;section>
@@ -66,14 +56,21 @@
     &hellip;
   &lt;/article>
 &lt;/section></code><p-fragment class="the-pointer"></p-fragment><p-fragment></p-fragment></pre>
+  <p-notes>
+    We start from a root node, we decide what we're looking for - for example, text nodes - and it does what you expect it do to: pointing to every text
+    node inside the root node.
+  </p-notes>
 </p-slide>
 <p-slide>
-  <pre class="big self-center"><code class="language-js">const walker = document.createTreeWalker(
-  sectionEl,</code><p-fragment class="vertical-collapsed"><code class="language-js"
->  NodeFilter.SHOW_TEXT</code><p-fragment class="collapsed"><code class="language-js"> | NodeFilter.SHOW_COMMENT</code></p-fragment>,</p-fragment><p-fragment class="vertical-collapsed"><code class="language-js"
->  (node) => node.data.includes('JavaScript')</code></p-fragment><p-fragment class="vertical-collapsed"><code class="language-js"
->    ? NodeFilter.FILTER_ACCEPT
-    : NodeFilter.FILTER_REJECT</code></p-fragment>);</pre>
+  <pre class="big self-center"><code class="language-js">const walker = </code><p-fragment class="vertical-collapsed"><code class="language-js">  document.createTreeWalker(
+    sectionEl,</code><p-fragment class="vertical-collapsed"><code class="language-js"
+>    NodeFilter.SHOW_TEXT</code><p-fragment class="collapsed"><code class="language-js"> | NodeFilter.SHOW_COMMENT</code></p-fragment>,</p-fragment><p-fragment class="vertical-collapsed"><code class="language-js"
+>    (node) => node.data.includes('JavaScript')</code></p-fragment><p-fragment class="vertical-collapsed"><code class="language-js"
+>      ? NodeFilter.FILTER_ACCEPT
+      : NodeFilter.FILTER_REJECT</code></p-fragment>  );</p-fragment></pre>
+  <p-notes>But we don't use <code>new</code> like a sane person would do: we use a factory function. You can smell the Java from there!</p-notes>
+  <p-notes>We provide a root node, we tell it what kind of node we're interested in&hellip; with an enum and bit mask, but Java!</p-notes>
+  <p-notes>And then we can provide an additional filtering function&hellip; which should return an enum value again! Can you smell the roasting beans?</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center no-clip"><code class="language-js">const walker = document.createTreeWalker(
@@ -104,7 +101,8 @@ style="top: 3lh; left: 2ch; width: 43ch; height: 7lh"></p-fragment></pre>
   <pre class="big"><code class="language-js">TreeWalker
 NodeIterator</code></pre>
   <p-fragment wtf-level="7"></p-fragment>
-  <p-notes>That's for <em>getting</em> the nodes. What about <em>creating</em> them?</p-notes>
+  <p-notes>Only 7 because well, they're awkward to use in 2025. Maybe wrap them in generator functions. And then, I bet you won't have to look for comment nodes often</p-notes>
+  <p-notes>That's for <em>getting</em> the nodes. What about <em>creating</em> them? We have <code>createElement</code> and the others, but&hellip;</p-notes>
 </p-slide>
 <p-slide>
   <pre class="self-center big"><code class="language-js">element.insertAdjacentElement(position, element);
@@ -112,7 +110,9 @@ NodeIterator</code></pre>
 element.insertAdjacentText(position, text);
 
 element.insertAdjacentHTML(position, html);</code></pre>
-  <p-notes>That's kind of embarassing, TBH. But maybe just for testing on the console?</p-notes>
+  <p-notes>We also have <em>these</em>. And for a <em>very</em> long while! Since IE 6!</p-notes>
+  <p-notes>Who's been born in 2001 or later here? These methods are older than <em>you</em>!</p-notes>
+  <p-notes>That's kind of embarassing, TBH. But maybe we can still find them a purpose?</p-notes>
   <p-fragment class="self-center">
     <span class="browser chrome">1</span>
     <span class="browser firefox">8</span>
@@ -146,6 +146,9 @@ class="line-pointer" style="top: .4em; left: calc(.667em + 2ch); text-indent: 12
 class="line-pointer left" style="top: calc(.5em + 1lh); left: calc(.667em - 12ch); width: 17ch"><code class="language-js">'afterbegin'</code></p-fragment><p-fragment
 class="line-pointer top left" style="top: calc(.5em + 5lh); left: calc(.667em - 12ch); width: 17ch"><code class="language-js">'beforeend'</code></p-fragment><p-fragment
 class="line-pointer top" style="top: calc(.6em + 6lh); left: calc(.667em + 2ch); text-indent: 15ch"><code class="language-js">'afterend'</code></p-fragment></pre>
+  <p-notes>Let's say we execute them on this article element.</p-notes>
+  <p-notes>We can visualize where the "stuff" will be put.</p-notes>
+  <p-notes>But actually we have something better today!</p-notes>
 </p-slide>
 <p-slide>
   <pre class="self-center big"><code class="language-js">element.append(nodeOrString</code><p-fragment class="collapsed"><code class="language-js">, ...</code></p-fragment><code class="language-js">)</code><p-fragment class="vertical-collapsed"><code class="language-js">element.prepend(nodeOrString, ...)
@@ -156,6 +159,8 @@ element.after(nodeOrString, ...)</code></p-fragment></pre>
     <span class="browser firefox">49</span>
     <span class="browser safari">10</span>
   </p-fragment>
+  <p-notes>It can takes DOM nodes, or a string, which is conveniently translated into a text node. And more than one, it can take multiple!</p-notes>
+  <p-notes>And there are all the others, equivalent to the other positions too. And widely available!</p-notes>
 </p-slide>
 <p-slide class="row justify-evenly align-center">
   <pre class="big"><code class="language-js">el.append()
@@ -171,19 +176,30 @@ el.after()</code></pre>
 
    element.insertAdjacentHTML(position, html);</code><p-fragment class="highlight"
 style="top: 4lh; left: 3ch; width: 43ch"></p-fragment></pre>
+  <p-notes>So what should we do about these ones? Are they still useful? The first two, clearly not. But what about the third?</p-notes>
 </p-slide>
 <p-slide>
-  <pre class="self-center big"><p-fragment class="the-stroke" index="1" aria-label="A strike through the line" style="width: 46ch"></p-fragment><code class="language-js">element.innerHTML += '&lt;div>Some HTML...&lt;/div>';</code></pre>
-  <p-fragment class="self-center">Everything not in the markup is <em>lost</em>:</p-fragment>
-  <p-fragment class="self-center"><ul>
-    <li>👉 event listeners;</li>
-    <li>👉 internal states;</li>
-    <li>👉 all references.</li>
-  </ul></p-fragment>
+  <pre class="self-center big"><p-fragment class="the-stroke" aria-label="A strike through the line" style="width: 46ch"></p-fragment><code class="language-js">element.innerHTML += '&lt;div>Some HTML...&lt;/div>';</code></pre>
+  <p-fragment class="self-center">
+    <pre class="big"><code class="language-js">element.insertAdjacentHTML(
+  'beforeend',
+  '&lt;div>Some HTML...&lt;/div>'
+);</code></pre>
+  </p-fragment>
+  <p-notes>It seems we can do the same with this, but&hellip; Everything not in the markup would be <em>lost</em>:</p-notes>
+  <p-notes>
+    <ul>
+      <li>event listeners;</li>
+      <li>internal states;</li>
+      <li>all references.</li>
+    </ul>
+  </p-notes>
 </p-slide>
 <p-slide class="row justify-evenly align-center">
   <pre class="big"><code class="language-js">el.insertAdjacentHTML()</code></pre>
-  <p-fragment wtf-level="2"></p-fragment>
+  <p-fragment wtf-level="3"></p-fragment>
+  <p-notes>Why so low? To be fair, normally we don't have to deal with DOM manipulation like that anymore. We don't pass around raw HTML,
+    we prefer to use libraries to generate and inject nodes around. But then!</p-notes>
 </p-slide>
 <p-slide class="row justify-evenly align-center">
   <div class="center">
@@ -191,5 +207,6 @@ style="top: 4lh; left: 3ch; width: 43ch"></p-fragment></pre>
     for debugging
   </div>
   <p-fragment wtf-level="7"></p-fragment>
+  <p-notes>I've actually used that for console experiment and debugging purposes. And it's been quite handy! So maybe consider it?</p-notes>
 </p-slide>
 

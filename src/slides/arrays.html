@@ -12,6 +12,7 @@ array[index] = x  &#x27f6;  array.with(index, x)
     <span class="browser firefox">115</span>
     <span class="browser safari">16</span>
   </p-fragment>
+  <p-notes>Because recently non-mutating alternative methods have been introduced. So here's a migration table.</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">array.length = n</code><p-fragment>  &#x27f6;  <code class="language-js">array.slice(0, n)</code></p-fragment>
@@ -20,23 +21,32 @@ array[index] = x  &#x27f6;  array.with(index, x)
                       <p-fragment><code class="language-js">array.map(() => 0)</code></p-fragment>
 
 </pre>
+  <p-notes>What's left out? Well, we have a way to cut an array short, so to say. But actually we had that already, because it's <code>slice</code></p-notes>
+  <p-notes>What's <em>actually</em> left out - and I have no idea why - is <code>fill</code>: there's no <code>toFilled</code> method, so we still have to rely on <code>map</code></p-notes>
 </p-slide>
 <p-slide class="row justify-evenly align-center">
-  <code class="language-js">array.toReversed()...</code>
+  <pre class="huge"><code class="language-js">array.toSorted()
+array.toReversed()
+array.toSpliced()
+array.with(index, x)</code></pre>
   <p-fragment class="self-center" wtf-level="8"></p-fragment>
+  <p-notes>Why not a higher value? Let me explain</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js input">Array(3)</code>
 <p-fragment><code class="language-js output">[empty &times; 3]</code></p-fragment>
 
-<p-fragment><code class="language-js input">Array(3).with()</code></p-fragment>
+<p-fragment><code class="language-js input">Array(3).toReversed()</code></p-fragment>
 <p-fragment><code class="language-js output">[undefined, undefined, undefined]</code></p-fragment></pre>
-  <p-notes>Careful that these new non-mutating methods makes <i>dense</i> a sparse array!</p-notes>
+  <p-notes>
+    When you create an array like that, you get&hellip; 3 empty slots. But if you apply a non-mutating method, you get 3 undefined values. What's happening?
+  </p-notes>
 </p-slide>
 <p-slide class="center">
   <h3><code>null</code></h3>
   <h3><code>undefined</code></h3>
-  <h3><code>empty</code><p-fragment class="collapsed"> ⁉️</p-fragment></h3>
+  <h3><p-fragment class="collapsed"><code>empty</code>&nbsp;⁉️</p-fragment></h3>
+  <p-notes>So in JS we have <code>null</code>, we have <code>undefined</code>&hellip; and now we have <code>empty</code>? What's that?</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">Array(3).forEach(console.log)</code>
@@ -45,7 +55,15 @@ array[index] = x  &#x27f6;  array.with(index, x)
 <p-fragment><code class="language-js">Array(2 ** 32 - 1)
 // ⚡</code></p-fragment></pre>
   <p-notes>
+    <code>empty</code> is the reason why when you create an array like that, and iterate over its content, you get a whole bunch of nothing. But also,
+    if you create a huge array with 4 bln items, it does it in the blink of an eye.
+  </p-notes>
+  <p-notes>
     Browsers be like: "Ah! You thought I'd give you 32 GB of memory!? We don't <i>have</i> 32 GB of memory, and even if we had, no way I'm allocating them for <i>you</i>! If
     anything, I'll get them for <i>myself!</i>"
+  </p-notes>
+  <p-notes>
+    Fact is, an array in JS are <em>not</em> a series of allocated memory portions: they're <em>hash maps</em>. A <em>sparse</em> array is a map with
+    some of its indexes missing - empty slots. Non-mutating methods fill those with <code>undefined</code> so&hellip; watch out!
   </p-notes>
 </p-slide>

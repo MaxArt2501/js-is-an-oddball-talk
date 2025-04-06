@@ -7,6 +7,10 @@
 <p-fragment><code class="language-error output">Uncaught TypeError: Super constructor
   null of Oddball is not a constructor</code></p-fragment></pre>
   <p-notes>
+    <p>But let's talk about <code>null</code> again. What if we use it as a superclass? What happens?</p>
+    <p>Well, JS doesn't complain so far. But when we create an object of that class, then&hellip;</p>
+  </p-notes>
+  <p-notes>
     <p>Why whould you allow me to do that in the first place?! Just to use it for static properties and methods? Way to make Java developers happy, I guess!</p>
   </p-notes>
 </p-slide>
@@ -37,6 +41,7 @@
   <script>
     document.currentScript.parentElement.querySelector('.output').innerHTML = `'ES${new Date().getFullYear()}'`;
   </script>
+  <p-notes>A piece of code that gets executed when the class is defined. So as you might expect, &hellip;</p-notes>
   <p-notes>Wait, this is pretty much&hellip; not interesting. Because it can be easily rewritten as&hellip;</p-notes>
 </p-slide>
 <p-slide>
@@ -94,4 +99,6 @@ JavaScript.version =
   }
 }</code></pre>
   <p-fragment wtf-level="7"></p-fragment>
+  <p-notes>I'd give it 7, because this syntax isn't common. And I don't think it'll ever become common, because its use cases are quite limited</p-notes>
+  <p-notes>But since we're talking about objects&hellip;</p-notes>
 </p-slide>

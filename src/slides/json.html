@@ -5,6 +5,7 @@
     <h3 class="JavaScript"></h3>
   </p-fragment>
   <p-fragment class="big-x" style="width: 8em; top: 28%; left: calc(50% - 4em)"></p-fragment>
+  <p-notes>JSON, you know. The most common object notation in JS-based projects, that thankfully replaced XML a while ago. It loves JS&hellip; <em>NOT</em>.</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js input">JSON.stringify({
@@ -15,6 +16,7 @@
   [Symbol('foo')]: 'symbol'
 })</code>
 <p-fragment><code class="language-js output">'{}' // 🙄</code></p-fragment></pre>
+  <p-notes>It's not because when you try to serialize this kind of object you get basically nothing. That's why you shouldn't use&hellip;</p-notes>
 </p-slide>
 <p-slide>
   <pre
@@ -36,6 +38,7 @@
   <p-notes>I'd say 9, but <code>structuredClone</code> is actually <em>slower!</em></p-notes>
 </p-slide>
 <p-slide>
+  <p-notes>So, let's say I want to produce a JSON like that.</p-notes>
   <pre class="big self-center"><code class="language-js">{ "bigMcHuge": 12345678901234567890 }</code></pre>
   <p-notes>
     Point is, JSONs can have arbitrarily large numbers. It's an interchange format, so it doesn't care about language limitations, not even JavaScript's. But JavaScript has
@@ -46,15 +49,17 @@
 <p-fragment><code class="language-js input">JSON.stringify({ bigMcHuge })</code></p-fragment>
 <p-fragment><code class="language-error output">Uncaught TypeError: Do not know how to
   serialize a BigInt</code></p-fragment></pre>
-  <p-notes>Haha, of course you know how to serialize a BigInt, you silly goose! Don't BigInts have the <code>toString</code> method?</p-notes>
+  <p-notes>And apparently JS doesn't know how to stringify a <em>number</em>, even though BigInts have the <code>toString</code> method. What gives?</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">BigInt.prototype.toJSON = function() {
   return this.toString();
 };</code></pre>
+  <p-notes>Let's try to fix that. As some of you may know, a <code>toJSON</code> method on an object gets called when we do <code>JSON.stringify</code> of that value</p-notes>
   <p-fragment>
     <h1 class="center">😱</h1>
   </p-fragment>
+  <p-notes>And I guess some of you might be horrified by this solution! After all&hellip;</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center">
@@ -66,6 +71,8 @@
   <p-fragment><code class="language-js">array.groupBy(fn)</code></p-fragment><p-fragment class="big-x" style="width: 4em; left: 18%; top: 63%"></p-fragment><p-fragment>  &#x27f6;  <code class="language-js">Object.groupBy(array, fn)</code></p-fragment>
 
 </pre>
+  <p-notes>That's the reason we we have&hellip;</p-notes>
+  <p-notes>I'm still bitter about the last one. But in this specific case, it's all good, because&hellip;</p-notes>
 </p-slide>
 <p-slide>
   <blockquote>&hellip; one of the few cases where patching built-in objects is not explicitly discouraged</blockquote>
@@ -76,6 +83,7 @@
 <p-slide class="row justify-evenly align-center">
   <pre class="big"><code class="language-js">BigInt.prototype.toJSON = ...</code></pre>
   <p-fragment wtf-level="8"></p-fragment>
+  <p-notes>So let's give this technique a wtf level of 8, and move on.</p-notes>
 </p-slide>
 <p-slide>
   <p-fragment index="1" style="position: absolute; top: 10%; left: 40%">
@@ -84,20 +92,29 @@
     <span class="browser safari">14</span>
     <div class="the-arrow" style="top: 75%; left: 33%; width: 0.8em; rotate: 10deg"></div>
   </p-fragment>
+  <p-notes>
+    Let's define this <code>toJSON</code> method, then. Maybe using this operator: the "nullish coalescing assignment operator"&hellip;
+    That's a mouthful! But it's well supported and makes our code kind of future-proof.
+  </p-notes>
   <pre
     class="big self-center"
   ><code class="language-js">BigInt.prototype.toJSON </code><p-fragment class="collapsed"><code class="language-js">??</code></p-fragment>= <code class="language-js">function() {
   return this.toString();
-};</code>
+};</code><p-fragment class="highlight" style="width: 3ch; top: 0; left: 24ch"></p-fragment>
 
 <p-fragment index="1"><code class="language-js input">JSON.stringify({ bigMcHuge })</code></p-fragment>
 <p-fragment index="1"><code class="language-js output">'{"bigMcHuge":"12345678901234567890"}'</code></p-fragment></pre>
+  <p-notes>Then we call <code>JSON.stringify</code>&hellip; and we're done! Or <em>are</em> we?</p-notes>
   <p-fragment index="1"
-    ><img src="img/pointer.webp" alt="A pointing hand to the opening quotes of the number" class="pointing-start" /><img
-      src="img/pointer.webp"
-      alt="A pointing hand to the closing quotes of the number"
-      class="pointing-end"
-  /></p-fragment>
+  ><img src="img/pointer.webp" alt="A pointing hand to the opening quotes of the number" class="pointing-start" /><img
+    src="img/pointer.webp"
+    alt="A pointing hand to the closing quotes of the number"
+    class="pointing-end"
+    /></p-fragment>
+  <p-notes>
+    <p>What are <em>those</em>?! They're double quotes! We don't want them!</p>
+    <p>It's because the method doesn't return a <em>serialized</em> string: it's meant to return a serializable <em>value</em>! That gets serialized after that</p>
+  </p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">BigInt.prototype.toJSON ??= function() {</code>
@@ -113,8 +130,11 @@
     <span class="browser firefox">135</span>
     <span class="browser safari">-</span>
   </p-fragment>
+  <p-notes>But we <em>do</em> have a solution! It's called&hellip;</p-notes>
+  <p-notes>It returns a special object that's used by <code>JSON.stringify</code> alone.</p-notes>
+  <p-notes>The only problem is that it's still not supported by Safari. There's a polyfill, though.</p-notes>
   <p-notes>
-    What does <code>JSON.rawJSON</code> return? A frozen object with no prototype, and a single constant string property named <code>rawJSON</code>, whose value is the function
+    <code>JSON.rawJSON</code> returns a frozen object with no prototype, and a single constant string property named <code>rawJSON</code>, whose value is the function
     argument and must be a formally correct JSON <i>primitive</i> value. It cannot even be converted to a string, but has an internal flag that allows us to use it with
     <code>JSON.stringify</code> alone.
   </p-notes>
@@ -126,12 +146,16 @@
 <p-fragment><code class="language-js output">{ bigMcHuge: 12345678901234567000 }</code></p-fragment><p-fragment
 class="highlight" style="top: 3lh; left: 32ch; width: 3ch; color: red"></p-fragment><p-fragment
 class="highlight" style="top: 0; left: 45ch; width: 3ch; color: red"></p-fragment></pre>
+  <p-notes>
+    What about the opposite? A JSON with a large number, we want to transform it into a JS object. If we use <code>JSON.parse</code> alone, we lose precision
+  </p-notes>
   <p-notes>Some may say: "I know! I'll use a reviver!" - Except, no you don't.</p-notes>
 </p-slide>
 <p-slide>
   <pre class="big self-center"><code class="language-js">JSON.parse(raw, (key, value) => {</code>
   <p-fragment><code class="language-js">// value already lost precision :(</code></p-fragment>
 <code class="language-js">});</code></pre>
+  <p-notes>Because at this point, <code>value</code> has already been converted to a number. What then?</p-notes>
 </p-slide>
 <p-slide>
   <pre
@@ -139,6 +163,8 @@ class="highlight" style="top: 0; left: 45ch; width: 3ch; color: red"></p-fragmen
   ><code class="language-js">JSON.parse(raw, (key, value</code><p-fragment class="collapsed"><code class="language-js">, context</code></p-fragment><code class="language-js">) => {   </code>
   <p-fragment index="1"><code class="language-js">return BigInt(context.source);</code></p-fragment>
 <code class="language-js">});</code></pre>
+  <p-notes>Well, now the reviver accepts a <em>third</em> argument, the context. Which is <em>that</em> object. And you may guess how we can use it</p-notes>
+  <p-notes>But again, Safari still doesn't support it, you have to provide a polyfill</p-notes>
   <p-fragment>
     <pre class="big" style="position: absolute; top: 10%; left: 30%"><code class="language-js">{ source: '12345678901234567890' }</code></pre>
     <div class="the-arrow" style="top: 24%; left: 63%; scale: -1 1; width: 1.2em"></div>
@@ -150,13 +176,6 @@ class="highlight" style="top: 0; left: 45ch; width: 3ch; color: red"></p-fragmen
   </p-fragment>
 </p-slide>
 <p-slide>
-  <pre class="big self-center"><code class="language-js">JSON.parse(raw, (key, value, context) => {</code>
-  <p-fragment><code class="language-js">if (!/\D/.test(context.source))</code></p-fragment>
-    <code class="language-js">return BigInt(context.source);</code>
-  <p-fragment><code class="language-js">return value;</code></p-fragment>
-});</pre>
-</p-slide>
-<p-slide>
   <pre class="big self-center"><code class="language-js">JSON.parse(raw, (key, value, { source }) => {
   return isBigInt(source) ? BigInt(source) : value;
 });</code><p-fragment class="highlight" aria-label="A marker circle around 'isBigInt' function name"
@@ -166,12 +185,8 @@ class="highlight" style="top: 0; left: 45ch; width: 3ch; color: red"></p-fragmen
   <p-fragment><code class="language-js">numstr.localeCompare(
     '9007199254740991', undefined, { numeric: true }
   ) > 0;</code></p-fragment></pre>
-  <p-notes> There must be something that tells us when a numeric string is greater than anothe&hellip; Golly, it's our good friend <code>localeCompare</code>! </p-notes>
+  <p-notes>Of course we can't convert every value to a bigint, so we need to discriminate</p-notes>
+  <p-notes> There must be something that tells us when a numeric string is greater than another&hellip; Golly, it's our good friend <code>localeCompare</code>! </p-notes>
+  <p-notes>I love when a language comes together like that. But it doesn't mean there aren't any problems! Even with <em>classic</em> syntax like&hellip;</p-notes>
 </p-slide>
-<!-- <p-slide>
-  <pre class="big self-center"><code class="language-js">const numCompare = new Intl.Collator(
-    undefined, { numeric: true }).compare;
 
-const isBigInt = numstr => !/\D/.test(numstr) &&
-  numCompare(numstr, '9007199254740991') > 0;</code></pre>
-</p-slide> -->
