@@ -1,0 +1,147 @@
+<p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-js">const person = new Person()</code><p-fragment class="the-stroke" aria-label="A strike through the text '= new Person()' in the code"
+    style="top: calc(.5em + 0lh);left: calc(.667em + 13ch);width: 14ch;"
+></p-fragment><p-fragment><code class="language-js">
+             = Object.create(anotherPerson);</code></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">function Person(name) {
+  this.name = name;
+}
+Person.prototype = {
+  greet() {
+    console.log("Hi, I'm " + this.name);
+  }
+};</code></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">function createPerson(name) {
+  return Object.create({
+    greet() {
+      console.log("Hi, I'm " + this.name);
+    }
+  }, {
+    name: { value: name }
+  });
+}</code></pre>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">const genericPerson = {
+  greet() { ... }
+};
+
+const person = Object.create(genericPerson)</code><p-fragment class="the-stroke" aria-label="A strike through the text 'Object.create(genericPerson)' in the code"
+    style="top: calc(.5em + 4lh);left: calc(.667em + 15ch);width: 28ch;"
+></p-fragment><p-fragment><code class="language-js">
+  {
+    __proto__: genericPerson,
+    name: 'Sam'
+  };</code></p-fragment><p-fragment class="highlight" aria-label="A highlighting around '__proto__' in the code" style="top: 6lh; left: 4ch; width: 9ch"></p-fragment></pre>
+</p-slide>
+<p-slide class="stack">
+  <pre class="big self-center"><code class="language-js">class Person {
+  constructor(name) { this.name = name; }
+  greet() { ... }
+}</code><p-fragment><code class="language-js">
+const person = {
+  __proto__: Person.prototype,
+  name: 'Sam'
+};</code></p-fragment><p-fragment><code class="language-js">
+person instanceof Person // true</code></p-fragment></pre>
+  <p-fragment style="place-self: center; rotate: 10deg; margin-bottom: 2.5em">
+    <code class="language-js" style="padding: 0.5em; background: var(--slide-bg); border: 0.1em solid">const person = new Person('sam');</code>
+  </p-fragment>
+</p-slide>
+<p-slide class="row align-center justify-evenly">
+  <pre><code class="language-js">// Tab 1
+class AuthToken {
+  constructor(authData) {
+    // Side effects here...
+  }
+}</code><p-fragment><code class="language-js">
+let authToken =
+  new AuthToken({ credentials });</code></p-fragment><p-fragment><code class="language-js">
+channel.postMessage(authToken);</code></p-fragment></pre>
+  <p-fragment>
+    <pre><code class="language-js">// Tab 2
+channel.addEventListener('message',
+  ({ data }) => {
+    authToken = {
+      __proto__: AuthToken.prototype,
+      ...data
+    };
+  }
+);</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="big self-center"><code class="language-js">const userData = {
+  __proto__: </code><p-fragment class="collapsed"><code class="language-js">null</code></p-fragment><code class="language-js">,
+  name: 'Alice Bob'
+};</code><p-fragment class="highlight" aria-label="A highlighting around '__proto__' in the code" style="top: 1lh; left: 2ch; width: 16ch"></p-fragment><p-fragment><code class="language-js">
+userData.toString       // undefined
+userData.hasOwnProperty // undefined</code><p-notes>Why should we have something like that?</p-notes></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre
+    class="big self-center"
+  ><code class="language-txt">https://my.site.com/app?foo=bar</code><p-fragment class="collapsed">&<code class="language-txt" style="color: #f44">__proto__.role=admin</code></p-fragment></pre>
+  <p-fragment class="self-center"
+    ><p-notes>If the user has no defined role (for example, because it's not logged in)</p-notes>
+    <pre class="big"><code class="language-js">user.role // undefined</code>
+<p-fragment><code class="language-js">const query = parseQueryString(location.search);</code><p-notes>Imagine a custom-made qeury string parsing function</p-notes></p-fragment>
+<p-fragment><code class="language-js">user.role // 'admin' 😱</code><p-notes>Even if <code>user</code> has nothing to do with <code>query</code>!</p-notes></p-fragment></pre>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <p-notes>Similar things could happen for JSONs</p-notes>
+  <pre class="big self-center"><code class="language-js">{ "__proto__": { "role": "admin" } }</code>
+
+<p-fragment><code class="language-js">const data = JSON.parse(raw);</code></p-fragment>
+<p-fragment><code class="language-js">// { __proto__: { role: 'admin' } }</code><p-notes>
+  Now <em>this</em> is fine, but if you use this object for something apparently safe&hellip;
+</p-notes></p-fragment>
+
+<p-fragment><code class="language-js">const allData = Object.assign(
+  { duration: 750 },
+  data
+);</code><p-notes>Whoops! But please note that using object spreading would have worked</p-notes></p-fragment></pre>
+</p-slide>
+<p-slide>
+  <pre class="big no-clip"><code class="language-js">const person = Object.create(Person.prototype);
+person.name = 'Sam';</code>
+
+<p-fragment><code class="language-js">const person = {
+  __proto__: Person.prototype,
+  name: 'Sam'
+};</code><p-notes>But also this method is too weird for you</p-notes></p-fragment>
+
+<p-fragment><code class="language-js">const person = { name: 'Sam' };
+Object.setPrototypeOf(person, Person.prototype);</code><p-notes>You can always use this one</p-notes></p-fragment><p-fragment
+  class="highlight" aria-label="A highlighting around 'Object.setPrototypeOf' in the code" style="top: 9lh; left: 0ch; width: 21ch"></p-fragment></pre>
+</p-slide>
+<p-slide class="row justify-evenly align-center">
+  <pre class="big"><code class="language-js">const person =
+  Object.create(protoPerson);
+person.name = 'Sam';</code></pre>
+  <p-fragment wtf-level="6"></p-fragment>
+  <p-notes>I guess it's official API, but it was conceinved in a weird time for JavaScript, when we had no <code>class</code></p-notes>
+</p-slide>
+<p-slide class="row justify-evenly align-center">
+  <pre class="big"><code class="language-js">const person = {
+  __proto__: protoPerson,
+  name: 'Sam'
+};</code></pre>
+  <p-fragment wtf-level="5"></p-fragment>
+  <p-notes>It's cooler but it's too weird to have a specially named property for this kind of thing</p-notes>
+</p-slide>
+<p-slide class="row justify-evenly align-center">
+  <pre class="big"><code class="language-js">const person = { name: 'Sam' };
+Object.setPrototypeOf(
+  person,
+  protoPerson
+);</code></pre>
+  <p-fragment wtf-level="9"></p-fragment>
+</p-slide>

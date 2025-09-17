@@ -9,6 +9,10 @@ p-slide {
   contain: paint;
 }
 
+p-notes {
+  display: none;
+}
+
 pre p-fragment {
   &[aria-hidden='true'] p-fragment,
   &[aria-hidden='false'] {

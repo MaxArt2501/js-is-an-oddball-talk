@@ -4,6 +4,8 @@ Slides for a talk about using JSDoc for your application types. xx slides, about
 
 Originally conceived for the [2025 Italian JS Day](https://2025.jsday.it/), Bologna, 2025-04-7/8.
 
+Also shown at [Come To Code](https://www.cometocode.it/) 2025, Potenza, 2025-09-27.
+
 Built on top of [P-Slides](https://github.com/MaxArt2501/p-slides)!
 
 ## Building
