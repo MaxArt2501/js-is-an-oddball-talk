@@ -38,6 +38,15 @@ pre[class*='language-'] {
   &[aria-hidden='false'] {
     animation-name: bounce, roll;
   }
+
+  &.ctc {
+    font-size: 1.5em;
+    position: relative;
+    margin: -1em auto -1em 7.5em;
+    align-self: center;
+    top: 0;
+    right: -6em;
+  }
 }
 
 @keyframes bounce {
@@ -421,5 +430,19 @@ $bojs-ball-size: 32vw;
   100% {
     top: calc(1em + 9lh);
     left: calc(1em + 6ch);
+  }
+}
+
+.ctc-logo {
+  position: absolute;
+  inset: 2.3em 1em auto auto;
+
+  img {
+    filter: invert(1);
+    width: 5em;
+  }
+  div {
+    font-size: 69%;
+    text-align: center;
   }
 }
