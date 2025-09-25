@@ -93,8 +93,8 @@
     <div class="the-arrow" style="top: 75%; left: 33%; width: 0.8em; rotate: 10deg"></div>
   </p-fragment>
   <p-notes>
-    Let's define this <code>toJSON</code> method, then. Maybe using this operator: the "nullish coalescing assignment operator"&hellip;
-    That's a mouthful! But it's well supported and makes our code kind of future-proof.
+    Let's define this <code>toJSON</code> method, then. Maybe using this operator: the "nullish coalescing assignment operator"&hellip; That's a mouthful! But it's well supported
+    and makes our code kind of future-proof.
   </p-notes>
   <pre
     class="big self-center"
@@ -106,11 +106,11 @@
 <p-fragment index="1"><code class="language-js output">'{"bigMcHuge":"12345678901234567890"}'</code></p-fragment></pre>
   <p-notes>Then we call <code>JSON.stringify</code>&hellip; and we're done! Or <em>are</em> we?</p-notes>
   <p-fragment index="1"
-  ><img src="img/pointer.webp" alt="A pointing hand to the opening quotes of the number" class="pointing-start" /><img
-    src="img/pointer.webp"
-    alt="A pointing hand to the closing quotes of the number"
-    class="pointing-end"
-    /></p-fragment>
+    ><img src="img/pointer.webp" alt="A pointing hand to the opening quotes of the number" class="pointing-start" /><img
+      src="img/pointer.webp"
+      alt="A pointing hand to the closing quotes of the number"
+      class="pointing-end"
+  /></p-fragment>
   <p-notes>
     <p>What are <em>those</em>?! They're double quotes! We don't want them!</p>
     <p>It's because the method doesn't return a <em>serialized</em> string: it's meant to return a serializable <em>value</em>! That gets serialized after that</p>
@@ -134,8 +134,8 @@
   <p-notes>It returns a special object that's used by <code>JSON.stringify</code> alone.</p-notes>
   <p-notes>The only problem is that it's still not supported by Safari. There's a polyfill, though.</p-notes>
   <p-notes>
-    <code>JSON.rawJSON</code> returns a frozen object with no prototype, and a single constant string property named <code>rawJSON</code>, whose value is the function
-    argument and must be a formally correct JSON <i>primitive</i> value. It cannot even be converted to a string, but has an internal flag that allows us to use it with
+    <code>JSON.rawJSON</code> returns a frozen object with no prototype, and a single constant string property named <code>rawJSON</code>, whose value is the function argument and
+    must be a formally correct JSON <i>primitive</i> value. It cannot even be converted to a string, but has an internal flag that allows us to use it with
     <code>JSON.stringify</code> alone.
   </p-notes>
 </p-slide>
@@ -146,9 +146,7 @@
 <p-fragment><code class="language-js output">{ bigMcHuge: 12345678901234567000 }</code></p-fragment><p-fragment
 class="highlight" style="top: 3lh; left: 32ch; width: 3ch; color: red"></p-fragment><p-fragment
 class="highlight" style="top: 0; left: 45ch; width: 3ch; color: red"></p-fragment></pre>
-  <p-notes>
-    What about the opposite? A JSON with a large number, we want to transform it into a JS object. If we use <code>JSON.parse</code> alone, we lose precision
-  </p-notes>
+  <p-notes> What about the opposite? A JSON with a large number, we want to transform it into a JS object. If we use <code>JSON.parse</code> alone, we lose precision </p-notes>
   <p-notes>Some may say: "I know! I'll use a reviver!" - Except, no you don't.</p-notes>
 </p-slide>
 <p-slide>
@@ -172,7 +170,7 @@ class="highlight" style="top: 0; left: 45ch; width: 3ch; color: red"></p-fragmen
   <p-fragment class="self-center" style="position: absolute; bottom: 25%" index="1">
     <span class="browser chrome">114</span>
     <span class="browser firefox">135</span>
-    <span class="browser safari">-</span>
+    <span class="browser safari">18.4</span>
   </p-fragment>
 </p-slide>
 <p-slide>
@@ -189,4 +187,3 @@ class="highlight" style="top: 0; left: 45ch; width: 3ch; color: red"></p-fragmen
   <p-notes> There must be something that tells us when a numeric string is greater than another&hellip; Golly, it's our good friend <code>localeCompare</code>! </p-notes>
   <p-notes>I love when a language comes together like that. But it doesn't mean there aren't any problems! Even with <em>classic</em> syntax like&hellip;</p-notes>
 </p-slide>
-

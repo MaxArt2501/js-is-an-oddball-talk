@@ -95,6 +95,15 @@ code {
   }
 }
 
+pre.language-fck {
+  white-space: normal;
+  word-break: break-all;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  overflow: visible;
+}
+
 .outline {
   -webkit-text-fill-color: #000;
   -webkit-text-stroke-color: currentColor;

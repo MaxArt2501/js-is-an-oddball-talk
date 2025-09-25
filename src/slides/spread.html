@@ -44,8 +44,7 @@ style="top: 1lh; left: 28ch; width: 6ch"></p-fragment>
 <p-fragment><code class="language-js">result = { foo: 42, ...''        };</code></p-fragment><p-fragment class="highlight"
 style="top: 0; left: 23ch; width: 9ch; height: 9lh"></p-fragment></pre>
   <p-notes>
-    And the same applies to other kind of values, like <code>undefined</code>, functions, booleans, numbers and the empty string.
-    None of them throws, or adds properties.
+    And the same applies to other kind of values, like <code>undefined</code>, functions, booleans, numbers and the empty string. None of them throws, or adds properties.
   </p-notes>
 </p-slide>
 <p-slide>
@@ -57,9 +56,8 @@ style="top: 0; left: 23ch; width: 9ch; height: 9lh"></p-fragment></pre>
     <pre class="big"><code class="language-js">const payload = Object.assign({ action: 'add' }, item);</code></pre>
   </p-fragment>
   <p-notes>
-    And even TypeScript doesn't mind, so we don't have to check if the object actually exist before spreading it.
-    Unless TS infers that it's <em>actually</em> <code>null</code>. In that case, it complains.
-    But we can always use <code>Object.assign</code>: no problems here! And it get better.
+    And even TypeScript doesn't mind, so we don't have to check if the object actually exist before spreading it. Unless TS infers that it's <em>actually</em> <code>null</code>. In
+    that case, it complains. But we can always use <code>Object.assign</code>: no problems here! And it get better.
   </p-notes>
 </p-slide>
 <p-slide>
@@ -70,13 +68,11 @@ const hasItem: boolean = shouldHaveItem(item);</code>
   action: 'add',
   ...(hasItem ? item : {})</code><p-fragment class="the-stroke" aria-label="A strike through the text '...(hasItem ? item : {})' in the code"
     style="top: calc(.5em + 5lh);left: calc(.667em + 2ch);width: 24ch;"
-></p-fragment>
-  <p-fragment><code class="language-js">...hasItem && item</code></p-fragment>
-};</p-fragment><p-fragment
+></p-fragment><p-fragment class="vertical-collapsed"><code class="language-js">  ...hasItem && item</code></p-fragment>};</p-fragment><p-fragment
   class="highlight" aria-label="A highlighting around '...hasItem && item' in the code" style="top: 6lh; left: 2ch; width: 18ch"></p-fragment></pre>
   <p-notes>
-    Suppose we have an item, and we add it to our payload depending on a flag. Instead of the usual ternary, we can use what's called "short circuiting"
-    and write it like that. Remember that booleans, like <code>false</code>, don't add properties? That's perfect!
+    Suppose we have an item, and we add it to our payload depending on a flag. Instead of the usual ternary, we can use what's called "short circuiting" and write it like that.
+    Remember that booleans, like <code>false</code>, don't add properties? That's perfect!
   </p-notes>
 </p-slide>
 <p-slide class="row justify-evenly align-center">
@@ -86,7 +82,7 @@ const hasItem: boolean = shouldHaveItem(item);</code>
 };</code></pre>
   <p-fragment wtf-level="7"></p-fragment>
   <p-notes>
-    Why only 7? Because, to be fair, it's not a very good example of readability. If you know "short circuiting", you know what I'm talking about
-    even though the React community pretty much got used to that.
+    Why only 7? Because, to be fair, it's not a very good example of readability. If you know "short circuiting", you know what I'm talking about even though the React community
+    pretty much got used to that.
   </p-notes>
 </p-slide>
