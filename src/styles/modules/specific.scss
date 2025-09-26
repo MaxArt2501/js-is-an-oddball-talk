@@ -281,9 +281,18 @@ p-deck:not([mode='speaker']) {
   z-index: -1;
   box-sizing: content-box;
 
-  &[aria-hidden='false'],
-  p-slide[aria-hidden='false'] &:not(p-fragment) {
+  &:is(p-fragment)[aria-hidden='true'],
+  p-fragment[aria-hidden='true'] > & {
+    clip-path: inset(0 100% calc(100% - 1lh) 0);
+  }
+
+  &:is(p-fragment)[aria-hidden='false'],
+  p-fragment[aria-hidden='false'] > & {
     animation: highlighting calc(var(--fragment-duration, 300ms) * 2) 1 forwards;
+  }
+
+  p-fragment:has(> &) {
+    opacity: 1;
   }
 
   pre.big & {
